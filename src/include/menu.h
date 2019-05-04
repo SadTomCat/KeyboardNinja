@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "struct_profile.h"
+#include "scene.h"
 
 static char keyboard[16][102] = {
     {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
@@ -28,6 +30,6 @@ static char keyboard[16][102] = {
 int choosen_action();
 void intro();
 void fast_intro();
-int menu();
+int menu(Profile profile);
 
 #endif //MENU_H_

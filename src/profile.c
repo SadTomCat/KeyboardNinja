@@ -3,7 +3,7 @@
 char* create_nickname(uint8_t fail_name)
 {   
     system("clear");
-    char choise;
+    char choice;
 
     if (fail_name == 0) {
         //временное меню
@@ -11,16 +11,16 @@ char* create_nickname(uint8_t fail_name)
         printf("\n                                        Choose one variant\n\n");
         printf("                 1.continue                    2.back                    3.close\n");
         
-        while(choise = getchar()) {
-            if (choise == '1') {
+        while(choice = getchar()) {
+            if (choice == '1') {
                 while(getchar() != '\n');
                 system("clear");
                 fast_intro();
                 printf("\nPut nickname: ");
                 break;
-            } else if (choise == '2') {
+            } else if (choice == '2') {
                 //
-            } else if (choise == '3') {
+            } else if (choice == '3') {
                 exit(0);
             } else {
                 system("clear");
@@ -36,16 +36,16 @@ char* create_nickname(uint8_t fail_name)
         printf("                                      Choose one variant\n\n");
         printf("                               1.continue     2.back     3.exit\n");
 
-        while (choise = getchar()) {
-            if (choise == '1') {
+        while (choice = getchar()) {
+            if (choice == '1') {
                 while(getchar() != '\n');
                 system("clear");
                 fast_intro();
                 printf("\nPut nickname: ");
                 break;
-            } else if (choise == '2') {
+            } else if (choice == '2') {
                 //
-            } else if (choise == '3') {
+            } else if (choice == '3') {
                 exit(1);
             } else {
                 system("clear");

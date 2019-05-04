@@ -3,7 +3,7 @@
 int choosen_action()
 {
     int choice = 0;
-    printf("\nInput your choise: ");
+    printf("\nInput your choice: ");
 
     while (scanf("%d", &choice) != 1)
     {
@@ -11,7 +11,7 @@ int choosen_action()
         system("clear");
         fast_intro();
         printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
-        printf("\nInput your choise: ");
+        printf("\nInput your choice: ");
     }
 
     return choice;
@@ -57,7 +57,7 @@ void intro()
     }
 }
 
-int menu() //После выбора действия заново вызывается меню.
+int menu(Profile profile) //После выбора действия заново вызывается меню.
 {
     int choice = 0;
     int a;
@@ -79,7 +79,7 @@ int menu() //После выбора действия заново вызыва�
     }
     if (choice == 2) //Scene
     {
-        //main();
+        scene(profile);
     }
     if (choice == 3) //For competitive
     {
@@ -100,11 +100,12 @@ int menu() //После выбора действия заново вызыва�
         fast_intro();
         printf("\n|||Это игра для помощи начинающим ниндзя-программистаам, она должна помочь вам научиться быстро печатать.");
         printf("\n|||Для выбора действия введите число из представленного выбора\n");
-        menu();
+        menu(profile);
     }
+
     if (choice == 7)
     {
         exit(0);
     }
-    menu();
+
 }

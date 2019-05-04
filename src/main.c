@@ -3,6 +3,7 @@
 #include "include/menu.h"
 #include "include/profile.h"
 #include "include/scene.h"
+#include "include/struct_profile.h"
 
 int main()
 {
@@ -15,7 +16,7 @@ int main()
 
     int choice;
     intro();
-    menu();
+    menu(profile1);
 
     return 0;
 }
