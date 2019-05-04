@@ -10,7 +10,7 @@ int choosen_action()
         scanf("%*[^\n]");
         system("clear");
         fast_intro();
-        printf("\n\t\t1.Training 2.Main 3.Competitive 4.Rating 5.Statistic 6.Help 7.Exit");
+        printf("\n\t\t1.Training     2.Main     3.Competitive     4.Rating     5.Statistic     6.Help     7.Exit");
         printf("\nInput correct number: ");
     }
 
@@ -63,13 +63,13 @@ int menu()
     int a;
 
     int variants = 7;
-    printf("\n\t\t1.Training 2.Main 3.Competitive 4.Rating 5.Statistic 6.Help 7.Exit");
+    printf("\n\t1.Training    2.Main    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
     choice = choosen_action();
     while (choice < 0 || choice > 7)
     {
         system("clear");
         fast_intro();
-        printf("\n\t\t1.Training 2.Main 3.Competitive 4.Rating 5.Statistic 6.Help 7.Exit");
+        printf("\n\t1.Training    2.Main    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
         choice = choosen_action();
     }
 
