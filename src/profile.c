@@ -78,6 +78,8 @@ char* create_nickname(uint8_t fail_name)
 
         if (i == 15) {
             nickname[i] = '\0';
+            printf("%s \n", nickname);
+            break;
         }
 
         ch = getchar();
@@ -100,6 +102,7 @@ char* verification_name(char* name)
         printf("\nYour nickname %s\n\n", name);
         printf("                                        Choose one action\n\n");
         printf("                                 1.Continue       2.Change nickname\n");
+        while(getchar() != '\n'); 
         scanf("%hhd", &verification);
 
         if (verification == 2) {
