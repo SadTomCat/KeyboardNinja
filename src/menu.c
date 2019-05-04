@@ -10,8 +10,8 @@ int choosen_action()
         scanf("%*[^\n]");
         system("clear");
         fast_intro();
-        printf("\n\t\t1.Training     2.Main     3.Competitive     4.Rating     5.Statistic     6.Help     7.Exit");
-        printf("\nInput correct number: ");
+        printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
+        printf("\nInput your choise: ");
     }
 
     return choice;
@@ -57,41 +57,41 @@ void intro()
     }
 }
 
-int menu()
+int menu() //После выбора действия заново вызывается меню.
 {
     int choice = 0;
     int a;
-
     int variants = 7;
-    printf("\n\t1.Training    2.Main    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
+
+    printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
     choice = choosen_action();
     while (choice < 0 || choice > 7)
     {
         system("clear");
         fast_intro();
-        printf("\n\t1.Training    2.Main    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
+        printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
         choice = choosen_action();
     }
 
-    if (choice == 1)
+    if (choice == 1) //For training
     {
-        return 1;
+        //rating();
     }
-    if (choice == 2)
+    if (choice == 2) //Scene
     {
-        return 2;
+        //main();
     }
-    if (choice == 3)
+    if (choice == 3) //For competitive
     {
-        return 3;
+        //competitive();
     }
-    if (choice == 4)
+    if (choice == 4) //For rating
     {
-        return 4;
+        //rating();
     }
-    if (choice == 5)
+    if (choice == 5) //For statistic
     {
-        return 5;
+        //statistic();
     }
 
     if (choice == 6)
@@ -106,4 +106,5 @@ int menu()
     {
         exit(0);
     }
+    menu();
 }
