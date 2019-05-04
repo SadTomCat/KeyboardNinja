@@ -78,7 +78,6 @@ char* create_nickname(uint8_t fail_name)
 
         if (i == 15) {
             nickname[i] = '\0';
-            printf("%s \n", nickname);
             break;
         }
 
@@ -90,22 +89,21 @@ char* create_nickname(uint8_t fail_name)
 
 char* verification_name(char* name)
 {   
-    uint8_t verification = 0;
+    char verification = '0';
 
     while (name[0] == '1') {
         name = create_nickname(1);
     }
 
-    while (verification != 1) {  
+    while (verification != '1') {  
         system("clear");
         fast_intro();
         printf("\nYour nickname %s\n\n", name);
         printf("                                        Choose one action\n\n");
-        printf("                                 1.Continue       2.Change nickname\n");
-        while(getchar() != '\n'); 
-        scanf("%hhd", &verification);
+        printf("                               1.For continue       2.Change nickname\n");
+        verification = getchar();
 
-        if (verification == 2) {
+        if (verification == '2') {
             name = create_nickname(0);
         }
 
