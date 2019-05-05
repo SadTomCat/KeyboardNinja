@@ -8,11 +8,12 @@
 int main()
 {
     char* profile = add_profile();
-    Profile profile1;
-    profile1.name = "kirill";
-    profile1.levels_passed = "2";
-    profile1.place_in_rating = "1";
-    profile1.point = "1337";
+
+    Profile* profile1 = malloc(sizeof(*profile1));
+    profile1->name = "kirill";
+    profile1->levels_passed = 2;
+    profile1->place_in_rating = 1;
+    profile1->point = 1337;
 
     int choice;
     intro();

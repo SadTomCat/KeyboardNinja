@@ -57,7 +57,7 @@ void intro()
     }
 }
 
-int menu(Profile profile) //После выбора действия заново вызывается меню.
+int menu(Profile* profile) //После выбора действия заново вызывается меню.
 {
     int choice = 0;
     int a;
