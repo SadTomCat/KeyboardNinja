@@ -1,5 +1,5 @@
 main: ./built/profile.o ./built/menu.o ./built/rating.o ./built/scene.o ./built/training.o ./built/read.o ./built/main.o
-	gcc -o ./bin/main ./built/menu.o ./built/profile.o ./built/rating.o ./built/scene.o ./built/training.o ./built/read.o ./built/main.o
+	gcc -o ./bin/KeyboardNinja ./built/menu.o ./built/profile.o ./built/rating.o ./built/scene.o ./built/training.o ./built/read.o ./built/main.o
 
 ./built/menu.o: ./src/menu.c
 	gcc -o ./built/menu.o -c ./src/menu.c
@@ -22,8 +22,8 @@ main: ./built/profile.o ./built/menu.o ./built/rating.o ./built/scene.o ./built/
 ./built/main.o: ./src/main.c
 	gcc -o ./built/main.o -c ./src/main.c
 
-run: ./bin/main
-	./bin/main
+run: ./bin/KeyboardNinja
+	./bin/KeyboardNinja
 
 clean: 
 	rm ./built/*.o
