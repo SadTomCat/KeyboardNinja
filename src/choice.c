@@ -17,7 +17,7 @@ void choice()
     } else {
 	if (number == 2) {
 	    system("clear");
-	    intro();
+	    fast_intro();
 	    menu();
 	} else {
 	    system("clear");
