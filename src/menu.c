@@ -1,4 +1,5 @@
 #include "include/menu.h"
+#include "include/comp_mode.h"
 
 int choosen_action()
 {
@@ -83,7 +84,7 @@ int menu() //После выбора действия заново вызыва�
     }
     if (choice == 3) //For competitive
     {
-        //competitive();
+        comp_mode();
     }
     if (choice == 4) //For rating
     {
