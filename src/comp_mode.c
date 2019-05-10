@@ -32,19 +32,19 @@ int comp_mode()
 
     switch(number) {
 	case 1:
-	   t = fopen("data/1.txt", "r");
+	   t = fopen("data/comp_1.txt", "r");
 	    break;
 	case 2:
-	    t = fopen("data/2.txt", "r");
+	    t = fopen("data/comp_2.txt", "r");
 	    break;
 	case 3:
-	    t = fopen("data/3.txt", "r");
+	    t = fopen("data/comp_3.txt", "r");
 	    break;
 	case 4:
-	    t = fopen("data/4.txt", "r");
+	    t = fopen("data/comp_4.txt", "r");
 	    break;
 	case 5:
-	    t = fopen("data/5.txt", "r");
+	    t = fopen("data/comp_5.txt", "r");
 	    break;
     }
 
