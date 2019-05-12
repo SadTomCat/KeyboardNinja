@@ -28,13 +28,13 @@ int action()
 int action_secs()
 {
     int secs = 0;
-    printf("\n\nInput time 5-99 (recommended 10-20)");
+    printf("\n\nInput time 5-99 (recommended 15-30)");
 
     while (scanf("%d", &secs) != 1)
     {
         scanf("%*[^\n]");
         system("clear");
-        printf("\n\n\nInput time 5-99 (recommended 10-20)");;
+        printf("\n\n\nInput time 5-99 (recommended 15-30)");;
     }
     return secs;
 }
@@ -136,6 +136,12 @@ int train()
 
     time3 = time2 - time1;
 
-    printf("Your errors = %d\nYour time = %.2f", errors - 1, time3);
+    printf("Your errors = %d  Your time = %.2f", errors - 1, time3);
+    if (time3<secs)
+    {
+        printf("\nTime mission completed");
+    }
+
+    printf("\n");
     usleep(10000000);
 }
