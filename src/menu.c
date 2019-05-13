@@ -1,4 +1,6 @@
 #include "include/menu.h"
+#include "include/comp_mode.h"
+#include "include/training.h"
 
 int choosen_action()
 {
@@ -63,6 +65,9 @@ int menu(Profile* profile) //После выбора действия занов
     int a;
     int variants = 7;
 
+    system("clear");
+
+    fast_intro();
     printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
     choice = choosen_action();
     while (choice < 0 || choice > 7)
@@ -75,7 +80,8 @@ int menu(Profile* profile) //После выбора действия занов
 
     if (choice == 1) //For training
     {
-        //rating();
+        system("clear");
+        train();
     }
     if (choice == 2) //Scene
     {
@@ -83,7 +89,8 @@ int menu(Profile* profile) //После выбора действия занов
     }
     if (choice == 3) //For competitive
     {
-        //competitive();
+        system("clear");
+        comp_mode();
     }
     if (choice == 4) //For rating
     {
@@ -101,6 +108,7 @@ int menu(Profile* profile) //После выбора действия занов
         printf("\n|||Это игра для помощи начинающим ниндзя-программистаам, она должна помочь вам научиться быстро печатать.");
         printf("\n|||Для выбора действия введите число из представленного выбора\n");
         menu(profile);
+        usleep(5000000);
     }
 
     if (choice == 7)
@@ -108,4 +116,6 @@ int menu(Profile* profile) //После выбора действия занов
         exit(0);
     }
 
+    menu(profile);
 }
+
