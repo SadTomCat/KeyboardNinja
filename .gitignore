@@ -1,3 +1,4 @@
 bin/*
 built/*
+src/test.c
 .vscode/

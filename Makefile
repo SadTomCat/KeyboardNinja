@@ -1,5 +1,5 @@
 main: ./built/profile.o ./built/menu.o ./built/rating.o ./built/scene.o ./built/training.o ./built/read.o ./built/main.o ./built/comp_mode.o ./built/choice.o
-	gcc -o ./bin/main ./built/menu.o ./built/profile.o ./built/rating.o ./built/scene.o ./built/training.o ./built/read.o ./built/main.o ./built/comp_mode.o ./built/choice.o
+	gcc -o ./bin/KeyboardNinja ./built/menu.o ./built/profile.o ./built/rating.o ./built/scene.o ./built/training.o ./built/read.o ./built/main.o ./built/comp_mode.o ./built/choice.o
 
 ./built/menu.o: ./src/menu.c
 	gcc -o ./built/menu.o -c ./src/menu.c

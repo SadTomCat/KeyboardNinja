@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <inttypes.h>
 #include <time.h>
+#include <string.h>
 #include "curses.h"
 #include "read.h"
 #include "menu.h"
@@ -14,6 +15,7 @@ void scene(Profile* profile);
 void easy(Profile* profile);
 void medium(Profile* profile);
 void insane(Profile* profile);
-void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_time, uint8_t level_number);
+void cannot(char* current, Profile* profile, uint8_t complexity);
+void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_time, uint8_t level_number, uint16_t text_size);
 
 #endif //SCENE_H_
