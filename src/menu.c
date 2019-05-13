@@ -122,8 +122,7 @@ int menu(Profile* profile, int intro_variant) //После выбора дейс
         fast_intro(intro_variant);
         printf("\n|||Это игра для помощи начинающим ниндзя-программистаам, она должна помочь вам научиться быстро печатать.");
         printf("\n|||Для выбора действия введите число из представленного выбора\n");
-        menu(profile, intro_variant);
-        usleep(5000000);
+        usleep(7000000);
     }
 
     if (choice == 7)
