@@ -8,6 +8,7 @@
 int main()
 {
     char* profile = add_profile();
+    int intro_variant = 1;
 
     Profile* profile1 = malloc(sizeof(*profile1));
     profile1->name = "jija_loh";
@@ -16,8 +17,8 @@ int main()
     profile1->point = 322;
 
     int choice;
-    intro();
-    menu(profile1);
+    intro(intro_variant);
+    menu(profile1, intro_variant);
 
     return 0;
 }
