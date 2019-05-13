@@ -72,7 +72,7 @@ int train()
 
     if (choice == 1)
     {
-        rezhim = rand() % 3 + 1;
+        rezhim = rand() % 2 + 1;
         switch (rezhim)
         {
         case 1:
@@ -85,7 +85,7 @@ int train()
     }
     if (choice == 2)
     {
-        rezhim = rand() % 3 + 1;
+        rezhim = rand() % 2 + 1;
         switch (rezhim)
         {
         case 1:
@@ -98,7 +98,7 @@ int train()
     }
     if (choice == 3)
     {
-        rezhim = rand() % 3 + 1;
+        rezhim = rand() % 2 + 1;
         switch (rezhim)
         {
         case 1:
@@ -140,6 +140,9 @@ int train()
     if (time3<secs)
     {
         printf("\nTime mission completed");
+    } else
+    {
+        printf("\nTime mission successfully failed");
     }
 
     printf("\n");

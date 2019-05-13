@@ -6,7 +6,6 @@
 #include <inttypes.h>
 #include <time.h>
 #include <string.h>
-#include "curses.h"
 #include "read.h"
 #include "menu.h"
 #include "struct_profile.h"
