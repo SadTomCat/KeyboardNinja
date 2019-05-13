@@ -109,25 +109,24 @@ void medium(Profile* profile)
         system("clear");
         fast_intro();
         printf("\n                                         choice one variant");
-        printf("\n\n             1.first level      2.second level      3.third level      4.back      5.close\n");
+        printf("\n\n             1.fourth level      2.fifth level      3.sixth level      4.back      5.close\n");
 
         if (choice == '1') {
             system("clear");
             char* text = read_from_file("./data/LEVEL_4.txt");
-            play_level(profile, text, 2, 100, 4, 170);
+            play_level(profile, text, 1, 100, 4, 170);
             free(text);
             medium(profile);
         }
 
         if (choice == '2' && profile->levels_passed < 4) {
-            //если есть ошибка вставь меню            
             cannot("level", profile, 2);
         }
 
         if (choice == '2' && profile->levels_passed >= 4) {
             system("clear");
             char* text = read_from_file("./data/LEVEL_5.txt");
-            play_level(profile, text, 2, 100, 5, 188);
+            play_level(profile, text, 1, 100, 5, 188);
             free(text);
             medium(profile);
         }
@@ -139,7 +138,7 @@ void medium(Profile* profile)
         if (choice == '3' && profile->levels_passed >= 5) {
             system("clear");
             char* text = read_from_file("./data/LEVEL_6.txt");
-            play_level(profile, text, 2, 165, 6, 158);
+            play_level(profile, text, 1, 165, 6, 158);
             free(text);
             medium(profile);
         }   
@@ -163,25 +162,24 @@ void insane(Profile* profile)
         system("clear");
         fast_intro();
         printf("\n                                         choice one variant");
-        printf("\n\n             1.first level      2.second level      3.third level      4.back      5.close\n");
+        printf("\n\n             1.seventh level      2.eighth level      3.ninth level      4.back      5.close\n");
 
         if (choice == '1') {
             system("clear");
             char* text = read_from_file("./data/LEVEL_7.txt");
-            play_level(profile, text, 2, 290, 7, 287);
+            play_level(profile, text, 0, 290, 7, 287);
             free(text);
             insane(profile);
         }
 
         if (choice == '2' && profile->levels_passed < 7) {
-            //если есть ошибка вставь меню            
             cannot("level", profile, 2);
         }
 
         if (choice == '2' && profile->levels_passed >= 7) {
             system("clear");
             char* text = read_from_file("./data/LEVEL_8.txt");
-            play_level(profile, text, 2, 290, 8, 283);
+            play_level(profile, text, 0, 290, 8, 283);
             free(text);
             insane(profile);
         }
@@ -193,7 +191,7 @@ void insane(Profile* profile)
         if (choice == '3' && profile->levels_passed >= 8) {
             system("clear");
             char* text = read_from_file("./data/LEVEL_9.txt");
-            play_level(profile, text, 2, 440, 9, 429);
+            play_level(profile, text, 0, 440, 9, 429);
             free(text);
             insane(profile);
         }   
@@ -210,29 +208,35 @@ void insane(Profile* profile)
 }
 
 void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_time, uint8_t level_number, uint16_t text_size)
-{   
-    if (max_mistake == 2) {
+{       
+    char choice;
+    while (choice = getchar() != '1') {
         system("clear");
-        printf("Enter this text, you can make 2 mistake\n\n");
-        printf("%s\n\n\n", text);
+        fast_intro();
+        printf("\n");
+        printf("Enter text, new string equal space, so use space!\n");
+    
+        if (max_mistake == 2) {
+        printf("Enter this text, you can make 2 mistake\n");        
+        }
+
+        if (max_mistake == 1) {
+            printf("Enter this text, you can make 1 mistake\n");
+        }
+
+        if (max_mistake == 0) {
+            printf("Enter this text, you cannot make mistake\n");
+        }
+
+        printf("Enter '1' for continue\n");
     }
 
-    if (max_mistake == 1) {
-        system("clear");
-        printf("Enter this text, you can make 1 mistake\n\n");
-        printf("%s\n\n\n", text);
-    }
-
-    if (max_mistake == 0) {
-        system("clear");
-        printf("Enter this text, you cannot make mistake\n\n");
-        printf("%s\n\n\n", text);
-    }
-    sleep(3);
+    system("clear");
+    scanf("%*[^\n]");
+    write_text(text, text_size);
     char ch;
     int mistake = -1, i = 0;
     long int start_time, end_time;
-    scanf("%*[^\n]");
     ch = getchar();
 
     start_time = time(NULL);
@@ -261,11 +265,15 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
 
     end_time = time(NULL);
 
-    //доработать
     if ((end_time - start_time) >= max_time) {
-        //сделать варианты
-        printf("\nYou did go beyond the time frame\n");
-        sleep(5);
+        printf("\nYou did go beyond the time frame\nPut enter for continue\n");
+        
+        ch = getchar();
+
+        while (ch != '\n') {
+            ch = getchar();
+        }
+
         return;
     }
     
@@ -274,19 +282,37 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
     if (mistake <= max_mistake) {
         if (level_number > profile->levels_passed && profile->levels_passed != 8) {
             profile->levels_passed = profile->levels_passed + 1;
-            printf("\nYou win, you make %d mistake, you open %d level\n", mistake + 1, profile->levels_passed + 1);
-            sleep(2);
+            printf("\nYou win, you make %d mistake, you open %d level\nPut enter for continue\n", mistake + 1, profile->levels_passed + 1);
+            
+            ch = getchar();
+
+            while (ch != '\n') {
+                ch = getchar();
+            }
+
             return;
         }
 
-        if (profile->levels_passed != 8) {
-            printf("\nYou win, you make %d mistake, you completed level\n", mistake + 1);
-            sleep(5);
+        if (level_number <= 9 && (profile->levels_passed != 8 && level_number != 9)) {
+            printf("\nYou win, you make %d mistake, you completed level\nPut enter for continue\n", mistake + 1);
+            
+            ch = getchar();
+
+            while (ch != '\n') {
+                ch = getchar();
+            }
+
             return;       
-        } else {
-            //встави особое меню и enter
-            printf("Сongratulations! You passed game\n");    
-            sleep(5);
+        } else if (profile->levels_passed == 8 && level_number == 9) {
+            //встави особое меню
+            system("clear");
+            printf("Сongratulations you passed game!\nYou can use this menu\nPut enter for continue");    
+            ch = getchar();
+
+            while (ch != '\n') {
+                ch = getchar();
+            }
+
             return;        
         }
     } else {
@@ -360,4 +386,37 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
             }
         }
     }
+}
+
+void write_text(char* text, uint16_t text_size)
+{
+    char word[30];
+    int i = 0, j = 0, len = 0;
+    fast_intro();
+
+    printf("\n");
+    while (i < text_size) {
+        while (text[i] != ' ' && i < text_size) {
+            word[j] = text[i];
+            len++;
+            j++;
+            i++;
+        }
+
+        len++;        
+        word[j] = '\0'; 
+        j = 0;
+        i++;
+
+        if (len <= 101) {
+            printf("%s ", word);    
+        } else {
+            printf("\n%s ", word);
+            len = strlen(word) + 1;
+        }
+    }
+
+    printf("\n\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////////////////////");    
+    printf("\n\n");
 }
