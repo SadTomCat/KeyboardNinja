@@ -7,7 +7,7 @@ char* create_nickname(uint8_t fail_name)
 
     if (fail_name == 0) {
         //временное меню
-        fast_intro();
+        fast_intro(1);
         printf("\n                                        Choose one variant\n\n");
         printf("                 1.continue                    2.back                    3.close\n");
         
@@ -15,7 +15,7 @@ char* create_nickname(uint8_t fail_name)
             if (choice == '1') {
                 while(getchar() != '\n');
                 system("clear");
-                fast_intro();
+                fast_intro(1);
                 printf("\nPut nickname: ");
                 break;
             } else if (choice == '2') {
@@ -24,14 +24,14 @@ char* create_nickname(uint8_t fail_name)
                 exit(0);
             } else {
                 system("clear");
-                fast_intro();
+                fast_intro(1);
                 printf("\n                                        Choose one variant\n\n");
                 printf("                 1.continue                    2.back                    3.close\n");
             }
         };
     } else {
         //вставить меню
-        fast_intro();  
+        fast_intro(1);  
         printf("\n                                  You input correct nicknamen\n\n");
         printf("                                      Choose one variant\n\n");
         printf("                               1.continue     2.back     3.exit\n");
@@ -40,7 +40,7 @@ char* create_nickname(uint8_t fail_name)
             if (choice == '1') {
                 while(getchar() != '\n');
                 system("clear");
-                fast_intro();
+                fast_intro(1);
                 printf("\nPut nickname: ");
                 break;
             } else if (choice == '2') {
@@ -49,7 +49,7 @@ char* create_nickname(uint8_t fail_name)
                 exit(1);
             } else {
                 system("clear");
-                fast_intro();  
+                fast_intro(1);  
                 printf("\n                                  You input correct nicknamen\n\n");
                 printf("                                      Choose one variant\n\n");
                 printf("                               1.continue     2.back     3.exit\n");
@@ -97,7 +97,7 @@ char* verification_name(char* name)
 
     while (verification != '1') {  
         system("clear");
-        fast_intro();
+        fast_intro(1);
         printf("\nYour nickname %s\n\n", name);
         printf("                                        Choose one action\n\n");
         printf("                               1.For continue       2.Change nickname\n");

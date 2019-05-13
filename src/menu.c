@@ -2,7 +2,7 @@
 #include "include/comp_mode.h"
 #include "include/training.h"
 
-int choosen_action()
+int choosen_action(int intro_variant)
 {
     int choice = 0;
     printf("\nInput your choice: ");
@@ -11,7 +11,7 @@ int choosen_action()
     {
         scanf("%*[^\n]");
         system("clear");
-        fast_intro();
+        fast_intro(intro_variant);
         printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
         printf("\nInput your choice: ");
     }
@@ -19,26 +19,35 @@ int choosen_action()
     return choice;
 }
 
-void fast_intro()
+void fast_intro(int intro_variant)
 {
     int i, k;
-
-    for (i = 0; i < 16; i++)
+    printf("\n!!!!!!%d!!!!!!\n", intro_variant);
+    if (intro_variant == 1)
     {
-        for (k = 0; k < 102; k++)
+        for (i = 0; i < 16; i++)
         {
-            printf("%c", keyboard[i][k]);
+            for (k = 0; k < 102; k++)
+            {
+                printf("%c", keyboard[i][k]);
+            }
+            printf("\n");
         }
-        printf("\n");
+    } else
+    {
+        /* code for second fast intro*/
     }
+    
+    
 }
 
-void intro()
+void intro(int intro_variant)
 {
+    
     system("clear");
     int i, j, k, t;
     int step;
-
+    if (intro_variant == 1){  
     j = 101;
     k = 102;
 
@@ -57,9 +66,15 @@ void intro()
         }
         usleep(20000);
     }
+    } else
+    {
+        /* code for second intro*/
+    }
+    
+    /* code *//* code */
 }
 
-int menu(Profile* profile) //После выбора действия заново вызывается меню.
+int menu(Profile* profile, int intro_variant) //После выбора действия заново вызывается меню.
 {
     int choice = 0;
     int a;
@@ -67,15 +82,15 @@ int menu(Profile* profile) //После выбора действия занов
 
     system("clear");
 
-    fast_intro();
+    fast_intro(intro_variant);
     printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
-    choice = choosen_action();
+    choice = choosen_action(intro_variant);
     while (choice < 0 || choice > 7)
     {
         system("clear");
-        fast_intro();
+        fast_intro(intro_variant);
         printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
-        choice = choosen_action();
+        choice = choosen_action(intro_variant);
     }
 
     if (choice == 1) //For training
@@ -104,11 +119,10 @@ int menu(Profile* profile) //После выбора действия занов
     if (choice == 6)
     {
         system("clear");
-        fast_intro();
+        fast_intro(intro_variant);
         printf("\n|||Это игра для помощи начинающим ниндзя-программистаам, она должна помочь вам научиться быстро печатать.");
         printf("\n|||Для выбора действия введите число из представленного выбора\n");
-        menu(profile);
-        usleep(5000000);
+        usleep(7000000);
     }
 
     if (choice == 7)
@@ -116,6 +130,6 @@ int menu(Profile* profile) //После выбора действия занов
         exit(0);
     }
 
-    menu(profile);
+    menu(profile, intro_variant);
 }
 
