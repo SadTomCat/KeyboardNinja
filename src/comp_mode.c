@@ -6,6 +6,7 @@
 #include <string.h>
 #include "include/comp_mode.h"
 #include "include/choice.h"
+#include "include/rating.h"
 
 double wtime()
 {
@@ -75,6 +76,8 @@ int comp_mode()
     speed = length / t3 * 60;
 
     printf("Your result:\n\nTime = %.2f sec\n\nNumber of errors = %d\n\nSpeed = %.0f characters per minute\n\n", t3, error, speed);
+
+    add(t3, speed);
 
     choice();
 

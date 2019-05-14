@@ -12,6 +12,6 @@
 
 //    void sort();
 
-    void scan_t();
+    void output();
 
 #endif
