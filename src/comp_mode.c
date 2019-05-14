@@ -78,8 +78,6 @@ int comp_mode()
     printf("Your result:\n\nTime = %.2f sec\n\nNumber of errors = %d\n\nSpeed = %.0f characters per minute\n\n", t3, error, speed);
 
     add(t3, speed);
-    
-    output();
 
     choice();
 

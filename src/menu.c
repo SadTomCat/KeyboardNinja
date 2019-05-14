@@ -1,5 +1,6 @@
 #include "include/menu.h"
 #include "include/comp_mode.h"
+#include "include/rating.h"
 
 int choosen_action()
 {
@@ -88,7 +89,7 @@ int menu() //После выбора действия заново вызыва�
     }
     if (choice == 4) //For rating
     {
-        //rating();
+        output();
     }
     if (choice == 5) //For statistic
     {
