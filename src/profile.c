@@ -2,7 +2,7 @@
 
 char* create_nickname(uint8_t fail_name)
 {   
-    char choice;
+    char choice = '0';
 
     while (choice < '1' || choice > '3') {
         if (fail_name == 0) {
@@ -44,7 +44,7 @@ char* create_nickname(uint8_t fail_name)
     nickname[0] = '-'; 
 
     while ((ch = getchar()) != '\n'){
-        if (((ch > 0 && ch < 48) || (ch > 57 && ch < 65) || (ch > 90 && ch < 97) || ch > 122) && ch != 95) {         
+        if (((ch > 0 && ch < 65) || (ch > 90 && ch < 97) || ch > 122) && ch != 95) {         
             free(nickname);
             char* nickname = malloc(sizeof(char));
             nickname[0] = '-';
