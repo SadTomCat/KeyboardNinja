@@ -3,9 +3,9 @@
 int start()
 {
     system("clear");
-    printf("\n3");
+    printf("\n3\n");
     usleep(900000);
-    printf("\n2");
+    printf("\n2\n");
     usleep(900000);
     printf("\n1\n");
     usleep(900000);
@@ -19,7 +19,7 @@ int action()
     {
         scanf("%*[^\n]");
         system("clear");
-        printf("\n\n1.Sentences 2.Words 3.Letters");
+        printf("\n\n1.Sentences 2.Words 3.Letters 4.Back");
         printf("\nInput your choise: ");
     }
 
@@ -41,13 +41,13 @@ int action_secs()
 
 int train()
 {
-    printf("\nMake your choice\n1.Sentences 2.Words 3.Letters");
+    printf("\nMake your choice\n1.Sentences 2.Words 3.Letters 4.Back");
     int choice = action();
 
-    while (choice < 0 || choice > 3)
+    while (choice < 0 || choice > 4)
     {
         system("clear");
-        printf("\n\t1.Sentences 2.Words 3.Letters");
+        printf("\n\t1.Sentences 2.Words 3.Letters 4.Back");
         choice = action();
     }
 
@@ -108,6 +108,10 @@ int train()
             text = fopen("data/train_6.txt", "r");
             break;
     }
+    }
+    if (choice == 4)
+    {
+        menu(1);
     }
 
     start();

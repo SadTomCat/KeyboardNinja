@@ -117,7 +117,7 @@ int menu(Profile* profile, int intro_variant) //После выбора дейс
     if (choice == 1) //For training
     {
         system("clear");
-        train();
+        train(profile, intro_variant);
     }
     if (choice == 2) //Scene
     {
