@@ -2,76 +2,55 @@
 
 char* create_nickname(uint8_t fail_name)
 {   
-    system("clear");
     char choice;
 
-    if (fail_name == 0) {
-        //временное меню
-        fast_intro(1);
-        printf("\n                                        Choose one variant\n\n");
-        printf("                 1.continue                    2.back                    3.close\n");
-        
-        while(choice = getchar()) {
-            if (choice == '1') {
-                while(getchar() != '\n');
-                system("clear");
-                fast_intro(1);
-                printf("\nPut nickname: ");
-                break;
-            } else if (choice == '2') {
-                //
-            } else if (choice == '3') {
-                exit(0);
-            } else {
-                system("clear");
-                fast_intro(1);
-                printf("\n                                        Choose one variant\n\n");
-                printf("                 1.continue                    2.back                    3.close\n");
-            }
-        };
-    } else {
-        //вставить меню
-        fast_intro(1);  
-        printf("\n                                  You input correct nicknamen\n\n");
-        printf("                                      Choose one variant\n\n");
-        printf("                               1.continue     2.back     3.exit\n");
-
-        while (choice = getchar()) {
-            if (choice == '1') {
-                while(getchar() != '\n');
-                system("clear");
-                fast_intro(1);
-                printf("\nPut nickname: ");
-                break;
-            } else if (choice == '2') {
-                //
-            } else if (choice == '3') {
-                exit(1);
-            } else {
-                system("clear");
-                fast_intro(1);  
-                printf("\n                                  You input correct nicknamen\n\n");
-                printf("                                      Choose one variant\n\n");
-                printf("                               1.continue     2.back     3.exit\n");
-            }
+    while (choice < '1' || choice > '3') {
+        if (fail_name == 0) {
+            system("clear");            
+            fast_intro(1); 
+            printf("\n                                          Choose one variant\n\n");
+            printf("                    1.continue                    2.back                    3.close\n");
         }
-    }
 
+        if (fail_name == 1) {
+            system("clear");
+            fast_intro(1);  
+            printf("\n                                        You input correct nicknamen\n\n");
+            printf("                                            Choose one variant\n\n");
+            printf("                                    1.continue     2.back     3.exit\n");
+        }
+
+        scanf("%c", &choice);
+        
+        switch(choice) {
+            case '1':
+                system("clear");
+                fast_intro(1);
+                printf("\nPut your nickname: "); 
+                while (getchar() != '\n');
+                break;
+            case '2':
+                //back
+                exit(1);
+                break; 
+            case '3': 
+                exit(0);
+        }
+    }  
+    
     uint8_t i = 0;
     char ch;
     char* nickname = malloc(sizeof(char) * NAME_SIZE);
-    nickname[0] = '1'; 
+    nickname[0] = '-'; 
 
-    ch = getchar();
-
-    while (ch != '\n'){
-        if (((ch > 0 && ch < 65) || (ch > 90 && ch < 97) || ch > 122) && ch != 95) {
+    while ((ch = getchar()) != '\n'){
+        if (((ch > 0 && ch < 48) || (ch > 57 && ch < 65) || (ch > 90 && ch < 97) || ch > 122) && ch != 95) {         
             free(nickname);
             char* nickname = malloc(sizeof(char));
-            nickname[0] = '1';
-            break;
+            nickname[0] = '-';
+            return nickname;
         }
-
+        
         nickname[i] = ch;
         i++;
 
@@ -79,8 +58,6 @@ char* create_nickname(uint8_t fail_name)
             nickname[i] = '\0';
             break;
         }
-
-        ch = getchar();
     }
 
     return nickname;
@@ -88,25 +65,25 @@ char* create_nickname(uint8_t fail_name)
 
 char* verification_name(char* name)
 {   
-    char verification = '0';
+    char choice = '0';
 
-    while (name[0] == '1') {
+    while (name[0] == '-') {
         name = create_nickname(1);
     }
 
-    while (verification != '1') {  
+    while (choice != '1') {  
         system("clear");
         fast_intro(1);
         printf("\nYour nickname %s\n\n", name);
         printf("                                        Choose one action\n\n");
         printf("                               1.For continue       2.Change nickname\n");
-        verification = getchar();
+        choice = getchar();
 
-        if (verification == '2') {
+        if (choice == '2') {
             name = create_nickname(0);
         }
 
-        while (name[0] == '1') {
+        while (name[0] == '-') {
             name = create_nickname(1);
         }
     }
@@ -116,8 +93,6 @@ char* verification_name(char* name)
 
 Profile* add_profile() 
 {   
-    system("clear");
-    //надо вставить интерфейс меню создания профиля
     uint8_t i = 0;
     Profile *new_profile = malloc(sizeof(*new_profile));
 
