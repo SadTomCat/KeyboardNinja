@@ -24,7 +24,25 @@ static char keyboard[16][102] = {
     {"///KKK////KKK/EEEEEEEE//////YYY//////BBBBBBBBB////OOOOOO////AAA////////AAA/RRR/////RRR/DDDDDD////////"},
     {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
     {"/////////////////////////////////////////////////////////////////////////////FROM NINJAS TO NINJAS///"},
-
+};                                                                                                            
+            
+static char keyboard2[16][102] = {
+    {"....................................................................................................."},
+    {"....................................................................................................."},
+    {"   NNNN     NNN  IIIIII  NNNN     NNN      JJJJJJ       AAAA                                         "},
+    {"   NNNNN    NNN  IIIIII  NNNNN    NNN      JJJJJJ     AAA  AAA       *                *       |      "},
+    {"   NNN NN   NNN          NNN NN   NNN      JJJJJJ   AAA      AAA      **            **       |||     "},
+    {"   NNN NN   NNN  IIIIII  NNN NN   NNN      JJJJJJ  AAA        AAA      ***        ***    *   |||   * "},
+    {"   NNN NN   NNN  IIIIII  NNN NN   NNN      JJJJJJ  AAA        AAA       ****    ****    *   |||||   *"},
+    {"   NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAAAAAAAAAAAAA        **********       * ||||| *  "},
+    {"   NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAAAAAAAAAAAAA         **    **        *********  "},
+    {"   NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAA        AAA        **********       **     **  "},
+    {"   NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAA        AAA       ****    ****      *********  "},
+    {"   NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAA        AAA      ***        ***     *********  "},
+    {"   NNN   NN NNN  IIIIII  NNN   NN NNN     JJJJJJ   AAA        AAA     **            **    ***   ***  "},
+    {"   NNN    NNNNN  IIIIII  NNN    NNNNN  JJJJJJ      AAA        AAA    *                *   ***   ***  "},
+    {"....................................................................................................."},
+    {".............................................................................FROM NINJAS TO NINJAS..."},
 };
 
 int choosen_action();

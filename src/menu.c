@@ -22,7 +22,6 @@ int choosen_action(int intro_variant)
 void fast_intro(int intro_variant)
 {
     int i, k;
-    printf("\n!!!!!!%d!!!!!!\n", intro_variant);
     if (intro_variant == 1)
     {
         for (i = 0; i < 16; i++)
@@ -33,9 +32,22 @@ void fast_intro(int intro_variant)
             }
             printf("\n");
         }
-    } else
+        
+        return;
+    } 
+
+    if (intro_variant == 2) 
     {
-        /* code for second fast intro*/
+        for (i = 0; i < 16; i++)
+        {
+            for (k = 0; k < 102; k++)
+            {
+                printf("%c", keyboard2[i][k]);
+            }
+            printf("\n");
+        }
+
+        return;
     }
     
     
@@ -68,10 +80,19 @@ void intro(int intro_variant)
     }
     } else
     {
-        /* code for second intro*/
+        system("clear");
+        step = k - j;
+
+        for (i = 0; i < 16; i++)
+        { 
+            for (t = step; t > 0; t--)
+            { 
+                printf("%c", keyboard2[i][k - t]);
+            }
+            printf("\n");
+        }
+        usleep(20000);
     }
-    
-    /* code *//* code */
 }
 
 int menu(Profile* profile, int intro_variant) //После выбора действия заново вызывается меню.

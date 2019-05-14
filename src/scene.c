@@ -1,7 +1,6 @@
 /*
     1.определить время для уровней
-    2.доделать меню
-    3.поревести окончательные тесты
+    2.поревести окончательные тесты
 */
 #include "include/scene.h"
 
@@ -9,7 +8,7 @@ void scene(Profile* profile)
 {  
     system("clear");
     char choice; 
-    fast_intro();
+    fast_intro(1);
     printf("\n                                         choice one variant");
     printf("\n\n                    1.Easy      2.medium      3.insane      4.back      5.close\n");
     scanf("%hhd", &choice);
@@ -36,8 +35,8 @@ void scene(Profile* profile)
     
     if (choice == 4) {
         system("clear");
-        fast_intro();
-        menu(profile);
+        fast_intro(1);
+        menu(profile, 1);
     }  
     
     if (choice == 5) {
@@ -54,7 +53,7 @@ void easy(Profile* profile)
 
     while (choice = getchar()) {
         system("clear");
-        fast_intro();
+        fast_intro(1);
         printf("\n                                         choice one variant");
         printf("\n\n             1.first level      2.second level      3.third level      4.back      5.close\n");
 
@@ -107,7 +106,7 @@ void medium(Profile* profile)
 
     while (choice = getchar()) {
         system("clear");
-        fast_intro();
+        fast_intro(1);
         printf("\n                                         choice one variant");
         printf("\n\n             1.fourth level      2.fifth level      3.sixth level      4.back      5.close\n");
 
@@ -160,7 +159,7 @@ void insane(Profile* profile)
 
     while (choice = getchar()) {
         system("clear");
-        fast_intro();
+        fast_intro(1);
         printf("\n                                         choice one variant");
         printf("\n\n             1.seventh level      2.eighth level      3.ninth level      4.back      5.close\n");
 
@@ -212,7 +211,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
     char choice;
     while (choice = getchar() != '1') {
         system("clear");
-        fast_intro();
+        fast_intro(1);
         printf("\n");
         printf("Enter text, new string equal space, so use space!\n");
     
@@ -304,9 +303,10 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
 
             return;       
         } else if (profile->levels_passed == 8 && level_number == 9) {
-            //встави особое меню
             system("clear");
-            printf("Сongratulations you passed game!\nYou can use this menu\nPut enter for continue");    
+            fast_intro(2);
+            printf("\nСongratulations you passed game!\nYou can use this menu\nPut enter for continue");    
+
             ch = getchar();
 
             while (ch != '\n') {
@@ -328,7 +328,7 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
     if (strcmp(current, "complexity") == 0) {
         while (choice = getchar()) {
             system("clear");
-            fast_intro();
+            fast_intro(1);
             printf("\n                                   You cannot choice that level\n");
             printf("\n                               1.continue      2.menu      3.close\n");
             
@@ -338,8 +338,8 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
             
             if (choice == '2') {
                 system("clear");
-                fast_intro();
-                menu(profile);
+                fast_intro(1);
+                menu(profile, 1);
             }  
             
             if (choice == '3') {
@@ -355,7 +355,7 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
     if (strcmp(current, "level") == 0) {
         while (choice = getchar()) {
             system("clear");
-            fast_intro();
+            fast_intro(1);
             printf("\n                                   You cannot choice that level\n");
             printf("\n                                 1.back      2.menu      3.close\n");
 
@@ -375,8 +375,8 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
 
             if (choice == '2') {
                 system("clear");
-                fast_intro();
-                menu(profile);
+                fast_intro(1);
+                menu(profile, 1);
             }
             
             if (choice == '3') {
@@ -392,7 +392,7 @@ void write_text(char* text, uint16_t text_size)
 {
     char word[30];
     int i = 0, j = 0, len = 0;
-    fast_intro();
+    fast_intro(1);
 
     printf("\n");
     while (i < text_size) {
