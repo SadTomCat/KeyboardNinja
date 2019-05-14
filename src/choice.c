@@ -17,8 +17,8 @@ void choice()
     } else {
 	if (number == 2) {
 	    system("clear");
-	    fast_intro();
-	    menu();
+	    fast_intro(1);
+	    //menu();
 	} else {
 	    system("clear");
 	    printf("Error! Enter 1 or 2\n\n");
