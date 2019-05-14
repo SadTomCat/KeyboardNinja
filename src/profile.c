@@ -54,7 +54,6 @@ char* create_nickname(uint8_t fail_name)
                 printf("                                      Choose one variant\n\n");
                 printf("                               1.continue     2.back     3.exit\n");
             }
-            
         }
     }
 
@@ -115,47 +114,19 @@ char* verification_name(char* name)
     return name;
 }
 
-char* add_profile() 
+Profile* add_profile() 
 {   
     system("clear");
     //надо вставить интерфейс меню создания профиля
     uint8_t i = 0;
     Profile *new_profile = malloc(sizeof(*new_profile));
-    char* profile = malloc(sizeof(char) * NUM_CHAR_FOR_PROFILE);
 
     new_profile->name = create_nickname(0);
     new_profile->name = verification_name(new_profile->name);
-    
-    while (1) {
-        profile[i] = new_profile->name[i];
-        i++;
+    new_profile->levels_passed = 0;
+    new_profile->place_in_rating = 0;
+    new_profile->point = 0;
+    new_profile->interface = 1;
 
-        if (new_profile->name[i] == '\0') {
-            profile[i] = ' '; 
-            i++;
-            profile[i] = '0'; //levels_passed
-            i++;
-            profile[i] = ' ';
-            i++;
-            profile[i] = '0'; //point
-            i++;
-            profile[i] = '0'; //point
-            i++;
-            profile[i] = '0'; //point
-            i++;
-            profile[i] = '0'; //point
-            i++;
-            profile[i] = ' ';
-            i++;
-            profile[i] = '-'; //place_in_rating
-            i++;
-            profile[i] = '\0'; 
-            break;
-        }
-    }    
-
-    free(new_profile->name);
-    free(new_profile);
-
-    return profile;
+    return new_profile;
 }

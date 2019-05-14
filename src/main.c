@@ -7,7 +7,7 @@
 
 int main()
 {
-    char* profile = add_profile();
+    Profile* profile = add_profile();
     int intro_variant = 1;
 
     Profile* profile1 = malloc(sizeof(*profile1));

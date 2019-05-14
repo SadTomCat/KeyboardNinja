@@ -9,15 +9,15 @@
 #include "menu.h"
 #include "struct_profile.h"
 
-//для каждого директивы учтен один символ для '\0', а еще в PROFILE учтены символы для пробелов  
-#define NUM_CHAR_FOR_PROFILE 25 
-#define NAME_SIZE 16   
-#define NUM_POINT 5 
-#define NUM_PLACE 2 
+#define NAME_SIZE 16 //учитывая '\0' т.е имя занимает 15 символов  
+
+/*Для Эдика!!!*/
+/*15 + 1! + 1 + 1! + 1 + 1! + 4 + 1! + 1(1! == пробел, всего под профиль максимум 26 символов)*/
+//ИМЯ_ПРОЙДЕНО.УРОВНЕЙ_МЕСТО.В.РЕЙТИНГЕ_КОЛ.ОЧКОВ_ИНТЕРФЕЙС (_ == пробел в файле)
 
 char* create_nickname(uint8_t fail_name);
 char* verification_name(char* name);
-char* add_profile();
+Profile* add_profile();
 
 
 #endif //PROFILE_H_

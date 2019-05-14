@@ -4,8 +4,9 @@
 typedef struct {
     char* name;
     int levels_passed;
-    int point;
     int place_in_rating;
+    int point;
+    int interface;
 } Profile;
 
 #endif //STRUCT_PROFILE_H_
