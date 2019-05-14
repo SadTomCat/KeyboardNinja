@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "include/rating.h"
 
 void add(double time, double speed)
@@ -22,8 +23,10 @@ void output()
 
     FILE *f = fopen("data/RATING.txt", "r");
 
+    system("clear");
+
     while (fscanf(f, "%s %lf %lf", t[i].name, &t[i].time, &t[i].speed) != EOF) {
-	printf("%d) %s %fsec %f character per minute", i + 1, t[i].name, t[i].time, t[i].speed);
+	printf("%d) %s %.2fsec %.0f character per minute\n", i + 1, t[i].name, t[i].time, t[i].speed);
 	i++;
     }
     fclose(f);
