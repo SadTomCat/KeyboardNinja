@@ -264,28 +264,38 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
     if (mistake <= max_mistake) {
         if (level_number > profile->levels_passed && profile->levels_passed != 8) {
             profile->levels_passed = profile->levels_passed + 1;
-            
-            while (ch = getchar() != '1') {
+            ch = '0';
+            ch = getchar();
+
+            while (ch != '1') {
                 fast_intro(profile->interface);
                 printf(KMAG5 "\nYou win, you make %d mistake, you open %d level\nPut \'1\' for continue\n", mistake + 1, profile->levels_passed + 1);
+                ch = getchar();
             }
 
             return;
         }
 
         if (level_number <= 9 && (profile->levels_passed != 8 && level_number != 9)) {
-           
-            while (ch = getchar() != '1') {
+            fast_intro(profile->interface);
+            ch = '0';
+            ch = getchar();
+
+            while (ch != '1') {
                 fast_intro(profile->interface);
                 printf(KMAG5 "\nYou win, you make %d mistake, you completed level\nPut \'1\' for continue\n", mistake + 1);
+                ch = getchar();
             }
 
             return;       
         } else if (profile->levels_passed == 8 && level_number == 9) { 
+            ch = '0';
+            ch = getchar();
 
-            while (ch = getchar() != '1') {
+            while (ch != '1') {
                 fast_intro(2);
                 printf(KMAG5 "\nСongratulations you passed game!\nYou can use this menu\nPut \'1\' for continue");   
+                ch = getchar();
             }
 
             return;        
