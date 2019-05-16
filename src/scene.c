@@ -195,18 +195,18 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
     while (choice = getchar() != '1') {
         fast_intro(profile->interface);
         printf("\n");
-        printf("Enter text, new string equal space, so use space!\n");
+        printf(KMAG4 "Enter text, new string equal space, so use space!\n");
     
         if (max_mistake == 2) {
-        printf("Enter this text, you can make 2 mistake\n");        
+            printf("You can make 2 mistake\n");        
         }
 
         if (max_mistake == 1) {
-            printf("Enter this text, you can make 1 mistake\n");
+            printf("You can make 1 mistake\n");
         }
 
         if (max_mistake == 0) {
-            printf("Enter this text, you cannot make mistake\n");
+            printf("You cannot make mistake\n");
         }
 
         printf("Enter '1' for continue\n");
@@ -237,7 +237,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
                 
                 while (ch = getchar() != '1') {
                     fast_intro(profile->interface);
-                    printf("\nYou made more mistake then was decide\nPut \'1\' for continue\n\n");    
+                    printf(KMAG4 "\nYou made more mistake then was decide\nPut \'1\' for continue\n\n");    
                 }
 
                 return;
@@ -253,7 +253,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
        
         while (ch = getchar() != '1') {
             fast_intro(profile->interface);
-            printf("\nYou did go beyond the time frame\nPut \'1\' for continue\n");
+            printf(KMAG4 "\nYou did go beyond the time frame\nPut \'1\' for continue\n");
         }
 
         return;
@@ -267,7 +267,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
             
             while (ch = getchar() != '1') {
                 fast_intro(profile->interface);
-                printf("\nYou win, you make %d mistake, you open %d level\nPut \'1\' for continue\n", mistake + 1, profile->levels_passed + 1);
+                printf(KMAG5 "\nYou win, you make %d mistake, you open %d level\nPut \'1\' for continue\n", mistake + 1, profile->levels_passed + 1);
             }
 
             return;
@@ -277,7 +277,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
            
             while (ch = getchar() != '1') {
                 fast_intro(profile->interface);
-                printf("\nYou win, you make %d mistake, you completed level\nPut \'1\' for continue\n", mistake + 1);
+                printf(KMAG5 "\nYou win, you make %d mistake, you completed level\nPut \'1\' for continue\n", mistake + 1);
             }
 
             return;       
@@ -285,7 +285,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
 
             while (ch = getchar() != '1') {
                 fast_intro(2);
-                printf("\nСongratulations you passed game!\nYou can use this menu\nPut \'1\' for continue");   
+                printf(KMAG5 "\nСongratulations you passed game!\nYou can use this menu\nPut \'1\' for continue");   
             }
 
             return;        
@@ -294,7 +294,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
 
         while (ch = getchar() != '1') {
             fast_intro(profile->interface);
-            printf("\nYou made more mistake then was decide, \nput \'1\' for continue\n\n\n"); 
+            printf(KMAG4 "\nYou made more mistake then was decide, \nput \'1\' for continue\n\n\n"); 
         }
 
         return; 
@@ -308,8 +308,8 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
     if (strcmp(current, "complexity") == 0) {
         while (choice = getchar()) {
             fast_intro(profile->interface);
-            printf("\n                                   You cannot choice that level\n");
-            printf("\n                               1.continue      2.menu      3.close\n");
+            printf(KMAG1 "\n                                   You cannot choice that level\n");
+            printf(KMAG9 "\n                               1.continue      2.menu      3.close\n");
             
             if (choice == '1') {
                 scene(profile);
@@ -333,8 +333,8 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
     if (strcmp(current, "level") == 0) {
         while (choice = getchar()) {
             fast_intro(profile->interface);
-            printf("\n                                   You cannot choice that level\n");
-            printf("\n                                 1.back      2.menu      3.close\n");
+            printf(KMAG1 "\n                                   You cannot choice that level\n");
+            printf(KMAG9 "\n                                 1.back      2.menu      3.close\n");
 
             if (choice == '1') {
                 if (complexity == 1) {

@@ -42,14 +42,14 @@ void write_text(char* text, uint16_t text_size)
         i++;
 
         if (len <= 101) {
-            printf("%s ", word);    
+            printf(KMAG9 "%s ", word);    
         } else {
-            printf("\n%s ", word);
+            printf(KMAG9 "\n%s ", word);
             len = strlen(word) + 1;
         }
     }
 
     printf("\n\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////////////////");    
-    printf("\n\n");
+    printf(KMAG4 "/////////////////////////////////////////////////////////////////////////////////////////////////////");    
+    printf(KMAG9 "\n\n");
 }

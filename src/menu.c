@@ -13,8 +13,8 @@ int choosen_action(int intro_variant)
         scanf("%*[^\n]");
         system("clear");
         fast_intro(intro_variant);
-        printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
-        printf("\nInput your choice: ");
+        printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
+        printf(KMAG9 "\nInput your choice: ");
     }
 
     return choice;
@@ -30,7 +30,7 @@ void fast_intro(int intro_variant)
         {
             for (k = 0; k < 102; k++)
             {
-                printf("%c", keyboard[i][k]);
+                printf(KMAG9 "%c", keyboard[i][k]);
             }
             printf("\n");
         }
@@ -44,7 +44,7 @@ void fast_intro(int intro_variant)
         {
             for (k = 0; k < 102; k++)
             {
-                printf("%c", keyboard2[i][k]);
+                printf(KMAG9 "%c", keyboard2[i][k]);
             }
             printf("\n");
         }
@@ -74,7 +74,7 @@ void intro(int intro_variant)
         { //В третьем форе печать строки, количество выводимых элементов равно шаг
             for (t = step; t > 0; t--)
             { //Выводится t элементов от k - t до k
-                printf("%c", keyboard[i][k - t]);
+                printf(KMAG9 "%c", keyboard[i][k - t]);
             }
             printf("\n");
         }
@@ -89,7 +89,7 @@ void intro(int intro_variant)
         { 
             for (t = step; t > 0; t--)
             { 
-                printf("%c", keyboard2[i][k - t]);
+                printf(KMAG9 "%c", keyboard2[i][k - t]);
             }
             printf("\n");
         }
@@ -106,13 +106,13 @@ int menu(Profile* profile, int intro_variant) //После выбора дейс
     system("clear");
 
     fast_intro(intro_variant);
-    printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
+    printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
     choice = choosen_action(intro_variant);
     while (choice < 0 || choice > 7)
     {
         system("clear");
         fast_intro(intro_variant);
-        printf("\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
+        printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
         choice = choosen_action(intro_variant);
     }
 
@@ -143,8 +143,8 @@ int menu(Profile* profile, int intro_variant) //После выбора дейс
     {
         system("clear");
         fast_intro(intro_variant);
-        printf("\n|||Это игра для помощи начинающим ниндзя-программистаам, она должна помочь вам научиться быстро печатать.");
-        printf("\n|||Для выбора действия введите число из представленного выбора\n");
+        printf(KMAG9 "\n|||Это игра для помощи начинающим ниндзя-программистаам, она должна помочь вам научиться быстро печатать.");
+        printf(KMAG9 "\n|||Для выбора действия введите число из представленного выбора\n");
         usleep(7000000);
     }
 

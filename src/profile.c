@@ -8,16 +8,16 @@ char* create_nickname(uint8_t fail_name)
         if (fail_name == 0) {
             system("clear");            
             fast_intro(1); 
-            printf("\n                                          Choose one variant\n\n");
-            printf("                    1.continue                    2.back                    3.close\n");
+            printf("\n                                            Choose one variant\n\n");
+            printf(KMAG9 "                    1.continue                    2.back                    3.close\n");
         }
 
         if (fail_name == 1) {
             system("clear");
             fast_intro(1);  
-            printf("\n                                        You input correct nicknamen\n\n");
-            printf("                                            Choose one variant\n\n");
-            printf("                                    1.continue     2.back     3.exit\n");
+            printf(KMAG1 "\n                                      You input correct nicknamen\n\n");
+            printf(KMAG9 "                                          Choose one variant\n\n");
+            printf("                                   1.continue     2.back     3.exit\n");
         }
 
         scanf("%c", &choice);
@@ -26,7 +26,7 @@ char* create_nickname(uint8_t fail_name)
             case '1':
                 system("clear");
                 fast_intro(1);
-                printf("\nPut your nickname: "); 
+                printf(KMAG4 "\nPut your nickname: "); 
                 while (getchar() != '\n');
                 break;
             case '2':
@@ -74,8 +74,8 @@ char* verification_name(char* name)
     while (choice != '1') {  
         system("clear");
         fast_intro(1);
-        printf("\nYour nickname %s\n\n", name);
-        printf("                                        Choose one action\n\n");
+        printf(KMAG4 "\nYour nickname %s\n\n", name);
+        printf(KMAG9 "                                        Choose one action\n\n");
         printf("                               1.For continue       2.Change nickname\n");
         choice = getchar();
 
