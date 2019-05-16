@@ -1,11 +1,11 @@
-main: ./built/profile.o ./built/menu.o ./built/rating.o ./built/scene.o ./built/training.o ./built/read.o ./built/main.o ./built/comp_mode.o ./built/choice.o
-	gcc -o ./bin/KeyboardNinja ./built/menu.o ./built/profile.o ./built/rating.o ./built/scene.o ./built/training.o ./built/read.o ./built/main.o ./built/comp_mode.o ./built/choice.o
+main: ./built/read_and_write.o ./built/profile.o ./built/menu.o ./built/rating.o ./built/scene.o ./built/training.o ./built/main.o ./built/comp_mode.o ./built/choice.o
+	gcc -o ./bin/KeyboardNinja ./built/read_and_write.o ./built/menu.o ./built/profile.o ./built/rating.o ./built/scene.o ./built/training.o ./built/main.o ./built/comp_mode.o ./built/choice.o
 
 ./built/menu.o: ./src/menu.c
 	gcc -o ./built/menu.o -c ./src/menu.c
 
-./built/read.o: ./src/read.c
-	gcc -o ./built/read.o -c ./src/read.c
+./built/read_and_write.o: ./src/read_and_write.c
+	gcc -o ./built/read_and_write.o -c ./src/read_and_write.c
 
 ./built/profile.o: ./src/profile.c
 	gcc -o ./built/profile.o -c ./src/profile.c

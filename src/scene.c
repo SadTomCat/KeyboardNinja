@@ -387,36 +387,3 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
         }
     }
 }
-
-void write_text(char* text, uint16_t text_size)
-{
-    char word[30];
-    int i = 0, j = 0, len = 0;
-    fast_intro(1);
-
-    printf("\n");
-    while (i < text_size) {
-        while (text[i] != ' ' && i < text_size) {
-            word[j] = text[i];
-            len++;
-            j++;
-            i++;
-        }
-
-        len++;        
-        word[j] = '\0'; 
-        j = 0;
-        i++;
-
-        if (len <= 101) {
-            printf("%s ", word);    
-        } else {
-            printf("\n%s ", word);
-            len = strlen(word) + 1;
-        }
-    }
-
-    printf("\n\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////////////////");    
-    printf("\n\n");
-}
