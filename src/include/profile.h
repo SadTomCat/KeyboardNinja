@@ -19,5 +19,4 @@ char* create_nickname(uint8_t fail_name);
 char* verification_name(char* name);
 Profile* add_profile();
 
-
 #endif //PROFILE_H_
