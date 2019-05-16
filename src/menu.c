@@ -22,6 +22,7 @@ int choosen_action(int intro_variant)
 
 void fast_intro(int intro_variant)
 {
+    system("clear");
     int i, k;
     if (intro_variant == 1)
     {

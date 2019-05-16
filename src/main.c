@@ -16,6 +16,7 @@ int main()
     profile1->levels_passed = 8;
     profile1->place_in_rating = 102;
     profile1->point = 322;
+    profile1->interface = 1;
 
     int choice;
     intro(intro_variant);

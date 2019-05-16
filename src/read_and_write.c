@@ -26,7 +26,6 @@ void write_text(char* text, uint16_t text_size)
 {
     char word[30];
     int i = 0, j = 0, len = 0;
-    fast_intro(1);
 
     printf("\n");
     while (i < text_size) {
