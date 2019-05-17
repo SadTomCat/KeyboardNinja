@@ -7,6 +7,7 @@
 #include <string.h>
 #include <unistd.h>
 #include "menu.h"
+#include "read_and_write.h"
 #include "struct_profile.h"
 
 #define NAME_SIZE 16 //учитывая '\0' т.е имя занимает 15 символов  

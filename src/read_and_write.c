@@ -53,3 +53,17 @@ void write_text(char* text, uint16_t text_size)
     printf(KMAG4 "/////////////////////////////////////////////////////////////////////////////////////////////////////");    
     printf(KMAG9 "\n\n");
 }
+
+void menu_equalization(uint8_t new_line, char* cur_menu) {
+    uint8_t num_space = (101 - strlen(cur_menu)) / 2;
+
+    for (uint8_t i = 0; i < new_line; i++) {
+        printf("\n");
+    }
+
+    for (uint8_t i = 0; i < num_space; i++) {
+        printf(" ");
+    }
+
+    printf("%s\n", cur_menu);
+}

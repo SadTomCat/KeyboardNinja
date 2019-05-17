@@ -11,5 +11,6 @@
 
 char* read_from_file(char* file_name);
 void write_text(char* text, uint16_t text_size);
+void menu_equalization(uint8_t new_line, char* cur_menu);
 
 #endif //READ_AND_WRITE_H_

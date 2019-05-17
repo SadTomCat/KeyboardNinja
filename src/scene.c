@@ -8,8 +8,8 @@ void scene(Profile* profile)
 {  
     fast_intro(profile->interface);
     char choice; 
-    printf("\n                                         choice one variant");
-    printf("\n\n                    1.Easy      2.medium      3.insane      4.back      5.close\n");
+    menu_equalization(1, "choice one variant");
+    menu_equalization(1, "1.Easy        2.medium        3.insane        4.back        5.close");
     scanf("%hhd", &choice);
 
     if (choice == 1) {
@@ -51,8 +51,8 @@ void easy(Profile* profile)
 
     while (choice = getchar()) {
         fast_intro(profile->interface);
-        printf("\n                                         choice one variant");
-        printf("\n\n             1.first level      2.second level      3.third level      4.back      5.close\n");
+        menu_equalization(1, "choice one variant");
+        menu_equalization(1, "1.first level      2.second level      3.third level      4.back      5.close");
 
         if (choice == '1') {
             char* text = read_from_file("./data/LEVEL_1.txt");
@@ -99,8 +99,8 @@ void medium(Profile* profile)
 
     while (choice = getchar()) {
         fast_intro(profile->interface);
-        printf("\n                                         choice one variant");
-        printf("\n\n             1.fourth level      2.fifth level      3.sixth level      4.back      5.close\n");
+        menu_equalization(1, "choice one variant");
+        menu_equalization(1, "1.fourth level      2.fifth level      3.sixth level      4.back      5.close");
 
         if (choice == '1') {
             char* text = read_from_file("./data/LEVEL_4.txt");
@@ -147,8 +147,8 @@ void insane(Profile* profile)
 
     while (choice = getchar()) {
         fast_intro(profile->interface);
-        printf("\n                                         choice one variant");
-        printf("\n\n             1.seventh level      2.eighth level      3.ninth level      4.back      5.close\n");
+        menu_equalization(1, "choice one variant");
+        menu_equalization(1, "1.seventh level      2.eighth level      3.ninth level      4.back      5.close");
 
         if (choice == '1') {
             char* text = read_from_file("./data/LEVEL_7.txt");
@@ -318,9 +318,11 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
     if (strcmp(current, "complexity") == 0) {
         while (choice = getchar()) {
             fast_intro(profile->interface);
-            printf(KMAG1 "\n                                   You cannot choice that level\n");
-            printf(KMAG9 "\n                               1.continue      2.menu      3.close\n");
-            
+            printf(KMAG1);
+            menu_equalization(1, "You cannot choice that level");
+            printf(KMAG9);
+            menu_equalization(1, "1.continue      2.menu      3.close");
+
             if (choice == '1') {
                 scene(profile);
             }  
@@ -343,8 +345,10 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
     if (strcmp(current, "level") == 0) {
         while (choice = getchar()) {
             fast_intro(profile->interface);
-            printf(KMAG1 "\n                                   You cannot choice that level\n");
-            printf(KMAG9 "\n                                 1.back      2.menu      3.close\n");
+            printf(KMAG1);
+            menu_equalization(1, "You cannot choice that level");
+            printf(KMAG9);
+            menu_equalization(1, "1.continue      2.menu      3.close");
 
             if (choice == '1') {
                 if (complexity == 1) {

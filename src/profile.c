@@ -8,16 +8,18 @@ char* create_nickname(uint8_t fail_name)
         if (fail_name == 0) {
             system("clear");            
             fast_intro(1); 
-            printf("\n                                            Choose one variant\n\n");
-            printf(KMAG9 "                    1.continue                    2.back                    3.close\n");
+            menu_equalization(1, "Choose one variant");
+            menu_equalization(1, "1.continue                    2.back                    3.close");
         }
 
         if (fail_name == 1) {
             system("clear");
-            fast_intro(1);  
-            printf(KMAG1 "\n                                      You input correct nicknamen\n\n");
-            printf(KMAG9 "                                          Choose one variant\n\n");
-            printf("                                   1.continue     2.back     3.exit\n");
+            fast_intro(1); 
+            printf(KMAG1);
+            menu_equalization(1, "You input correct nicknamen");
+            printf(KMAG9);
+            menu_equalization(1, "Choose one variant");
+            menu_equalization(1, "1.continue                    2.back                    3.exit");
         }
 
         scanf("%c", &choice);
@@ -26,7 +28,7 @@ char* create_nickname(uint8_t fail_name)
             case '1':
                 system("clear");
                 fast_intro(1);
-                printf(KMAG4 "\nPut your nickname: "); 
+                printf(KMAG4 "\nPut your nickname: ");
                 while (getchar() != '\n');
                 break;
             case '2':
@@ -75,8 +77,9 @@ char* verification_name(char* name)
         system("clear");
         fast_intro(1);
         printf(KMAG4 "\nYour nickname %s\n\n", name);
-        printf(KMAG9 "                                        Choose one action\n\n");
-        printf("                               1.For continue       2.Change nickname\n");
+        printf(KMAG9);
+        menu_equalization(0, "Choose one action");
+        menu_equalization(1, "1.For continue       2.Change nickname");
         choice = getchar();
 
         if (choice == '2') {
