@@ -16,7 +16,7 @@ char* read_from_file(char* file_name)
     }
 
     while (fgets(text, MAX_TEXT_SIZE, file));
-    
+  
     fclose(file);
 
     return text;
@@ -24,7 +24,7 @@ char* read_from_file(char* file_name)
 
 void write_text(char* text, uint16_t text_size)
 {
-    char word[30];
+    char* word = malloc(sizeof(char) * 30);
     int i = 0, j = 0, len = 0;
 
     printf("\n");
@@ -52,9 +52,11 @@ void write_text(char* text, uint16_t text_size)
     printf("\n\n");
     printf(KMAG4 "/////////////////////////////////////////////////////////////////////////////////////////////////////");    
     printf(KMAG9 "\n\n");
+    free(word);
 }
 
-void menu_equalization(uint8_t new_line, char* cur_menu) {
+void menu_equalization(uint8_t new_line, char* cur_menu) 
+{
     uint8_t num_space = (101 - strlen(cur_menu)) / 2;
 
     for (uint8_t i = 0; i < new_line; i++) {
@@ -66,4 +68,55 @@ void menu_equalization(uint8_t new_line, char* cur_menu) {
     }
 
     printf("%s\n", cur_menu);
+}
+
+void print_mistake_text(char* correct, char* incorrect, uint16_t text_size) 
+{
+    char word1[30];
+    char word2[30];
+    uint16_t i = 0, j = 0, len = 0, k;
+
+    while (i < text_size) {
+        while (incorrect[i] != ' ' && i < text_size) {
+            word1[j] = incorrect[i];
+            word2[j] = correct[i];
+            len++;
+            j++;
+            i++;
+        }
+        
+        len++;        
+        word1[j] = '\0'; 
+        word2[j] = '\0';
+
+        if (len <= 101) {
+            for (k = 0; k <= j; k++) {
+                if (word1[k] == word2[k]) {
+                    printf(KMAG9 "%c", word1[k]);
+                } else {
+                    printf(KMAG1 "%c", word1[k]);
+                }
+            }
+
+            printf(" ");
+        } else {
+            printf("\n");
+            len = strlen(word1) + 1;
+            for (k = 0; k < j; k++) {
+                if (word1[k] == word2[k]) {
+                    printf(KMAG9 "%c", word1[k]);
+                } else {
+                    printf(KMAG1 "%c", word1[k]);
+                }
+            }
+
+            printf(" ");
+        }
+        
+        i++;
+        j = 0;
+    }
+    printf(KMAG4 "\n\n/////////////////////////////////////////////////////////////////////////////////////////////////////");    
+    printf("\n\nPut '1' for continue: ");
+    while (getchar() != '1');
 }

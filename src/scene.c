@@ -219,27 +219,34 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
     char ch;
     int mistake = -1, i = 0;
     long int start_time, end_time;
+    char* input = malloc(sizeof(char) * text_size);
     ch = getchar();
 
     start_time = time(NULL);
 
-    while ((text[i] != '\0') && (ch != 27) && (ch != '\b')) {
+    while ((text[i] != '\0') && (ch != 27)) {
         ch = getchar();
-        
+        input[i] = ch; 
+
         if (ch == '\n') {
             break;
         }
 
         if (text[i] != ch && ch != '\n') {
             mistake++;
-            
+            input[i + 1] = '\0';
+             
             if (mistake == max_mistake) {
                 
                 while (ch = getchar() != '1') {
                     fast_intro(profile->interface);
-                    printf(KMAG4 "\nYou made more mistake then was decide\nPut \'1\' for continue\n\n");    
+                    printf(KMAG4 "\nYou made more mistake then was decide\nPut \'1\' for continue\n\n");  
                 }
-
+                fast_intro(profile->interface);
+                write_text(text, text_size);
+                print_mistake_text(text, input, i); 
+                 
+                free(input);
                 return;
             }
         }
@@ -256,6 +263,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
             printf(KMAG4 "\nYou did go beyond the time frame\nPut \'1\' for continue\n");
         }
 
+        free(input);
         return;
     }
     
@@ -273,6 +281,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
                 ch = getchar();
             }
 
+            free(input);
             return;
         }
 
@@ -287,6 +296,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
                 ch = getchar();
             }
 
+            free(input);
             return;       
         } else if (profile->levels_passed == 8 && level_number == 9) { 
             ch = '0';
@@ -298,6 +308,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
                 ch = getchar();
             }
 
+            free(input);
             return;        
         }
     } else {
@@ -307,6 +318,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
             printf(KMAG4 "\nYou made more mistake then was decide, \nput \'1\' for continue\n\n\n"); 
         }
 
+        free(input);
         return; 
     }
 }
