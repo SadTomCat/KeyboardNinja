@@ -79,7 +79,7 @@ int comp_mode()
 
     add(t3, speed);
 
-    choice();
+    choice_comp();
 
     return 0;
 }

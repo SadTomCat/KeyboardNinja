@@ -9,7 +9,10 @@ int start()
     usleep(900000);
     printf("\n1\n");
     usleep(900000);
+
+    return 0;
 }
+
 int action()
 {
     int choice = 0;
@@ -25,6 +28,7 @@ int action()
 
     return choice;
 }
+
 int action_secs()
 {
     int secs = 0;
@@ -35,8 +39,8 @@ int action_secs()
         scanf("%*[^\n]");
         system("clear");
         printf("\n\n\nInput time 5-99 (recommended 15-30)");
-        ;
     }
+
     return secs;
 }
 
@@ -158,4 +162,6 @@ int train(Profile *profile, int intro_variant)
         printf("\n");
         usleep(10000000);
     }
+
+    return 0;
 }

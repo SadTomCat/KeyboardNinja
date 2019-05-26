@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "include/menu.h"
 
-void choice()
+void choice_comp()
 {
     int number;
 
@@ -22,7 +22,7 @@ void choice()
 	} else {
 	    system("clear");
 	    printf("Error! Enter 1 or 2\n\n");
-	    choice();
+	    choice_comp();
 	}
    }
 }

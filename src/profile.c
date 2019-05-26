@@ -96,7 +96,6 @@ char* verification_name(char* name)
 
 Profile* add_profile() 
 {   
-    uint8_t i = 0;
     Profile *new_profile = malloc(sizeof(*new_profile));
 
     new_profile->name = create_nickname(0);

@@ -1,13 +1,13 @@
 /*
-    1.определить время для уровней
     2.поревести окончательные тесты
 */
 #include "include/scene.h"
 
+char choice;
+
 void scene(Profile* profile)
 {  
     fast_intro(profile->interface);
-    char choice; 
     menu_equalization(1, "choice one variant");
     menu_equalization(1, "1.Easy        2.medium        3.insane        4.back        5.close");
     scanf("%hhd", &choice);
@@ -39,6 +39,7 @@ void scene(Profile* profile)
     
     if (choice == 5) {
         exit(0);
+        free(profile);
     } else {
         scanf("%*[^\n]");
         scene(profile);
@@ -47,16 +48,14 @@ void scene(Profile* profile)
 
 void easy(Profile* profile)
 {
-    char choice;
-
-    while (choice = getchar()) {
+    while ((choice = getchar())) {
         fast_intro(profile->interface);
         menu_equalization(1, "choice one variant");
         menu_equalization(1, "1.first level      2.second level      3.third level      4.back      5.close");
 
         if (choice == '1') {
             char* text = read_from_file("./data/LEVEL_1.txt");
-            play_level(profile, text, 2, 100, 1, 157);
+            play_level(profile, text, 2, 157, 1, 157);
             free(text);
             easy(profile);
         }
@@ -67,7 +66,7 @@ void easy(Profile* profile)
 
         if (choice == '2' && profile->levels_passed >= 1) {
             char* text = read_from_file("./data/LEVEL_2.txt");
-            play_level(profile, text, 2, 100, 2, 166);
+            play_level(profile, text, 2, 166, 2, 166);
             free(text);
             easy(profile);
         }  
@@ -78,7 +77,7 @@ void easy(Profile* profile)
 
         if (choice == '3' && profile->levels_passed >= 2) {
             char* text = read_from_file("./data/LEVEL_3.txt");
-            play_level(profile, text, 2, 100, 3, 198);
+            play_level(profile, text, 2, 170, 3, 198);
             free(text);
             easy(profile);
         }     
@@ -89,22 +88,21 @@ void easy(Profile* profile)
 
         if (choice == '5') {
             exit(0);
+            free(profile);
         }
     }   
 }
 
 void medium(Profile* profile)
 {
-    char choice;
-
-    while (choice = getchar()) {
+    while ((choice = getchar())) {
         fast_intro(profile->interface);
         menu_equalization(1, "choice one variant");
         menu_equalization(1, "1.fourth level      2.fifth level      3.sixth level      4.back      5.close");
 
         if (choice == '1') {
             char* text = read_from_file("./data/LEVEL_4.txt");
-            play_level(profile, text, 1, 100, 4, 170);
+            play_level(profile, text, 1, 150, 4, 170);
             free(text);
             medium(profile);
         }
@@ -115,7 +113,7 @@ void medium(Profile* profile)
 
         if (choice == '2' && profile->levels_passed >= 4) {
             char* text = read_from_file("./data/LEVEL_5.txt");
-            play_level(profile, text, 1, 100, 5, 188);
+            play_level(profile, text, 1, 168, 5, 188);
             free(text);
             medium(profile);
         }
@@ -126,7 +124,7 @@ void medium(Profile* profile)
 
         if (choice == '3' && profile->levels_passed >= 5) {
             char* text = read_from_file("./data/LEVEL_6.txt");
-            play_level(profile, text, 1, 165, 6, 158);
+            play_level(profile, text, 1, 138, 6, 158);
             free(text);
             medium(profile);
         }   
@@ -137,22 +135,21 @@ void medium(Profile* profile)
 
         if (choice == '5') {
             exit(0);
+            free(profile);
         }
     }
 }
 
 void insane(Profile* profile)
 {
-    char choice;
-
-    while (choice = getchar()) {
+    while ((choice = getchar())) {
         fast_intro(profile->interface);
         menu_equalization(1, "choice one variant");
         menu_equalization(1, "1.seventh level      2.eighth level      3.ninth level      4.back      5.close");
 
         if (choice == '1') {
             char* text = read_from_file("./data/LEVEL_7.txt");
-            play_level(profile, text, 0, 290, 7, 287);
+            play_level(profile, text, 0, 257, 7, 287);
             free(text);
             insane(profile);
         }
@@ -163,7 +160,7 @@ void insane(Profile* profile)
 
         if (choice == '2' && profile->levels_passed >= 7) {
             char* text = read_from_file("./data/LEVEL_8.txt");
-            play_level(profile, text, 0, 290, 8, 283);
+            play_level(profile, text, 0, 253, 8, 283);
             free(text);
             insane(profile);
         }
@@ -174,7 +171,7 @@ void insane(Profile* profile)
 
         if (choice == '3' && profile->levels_passed >= 8) {
             char* text = read_from_file("./data/LEVEL_9.txt");
-            play_level(profile, text, 0, 440, 9, 429);
+            play_level(profile, text, 0, 379, 9, 429);
             free(text);
             insane(profile);
         }   
@@ -185,14 +182,14 @@ void insane(Profile* profile)
 
         if (choice == '5') {
             exit(0);
+            free(profile);
         }
     }
 }
 
 void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_time, uint8_t level_number, uint16_t text_size)
 {       
-    char choice;
-    while (choice = getchar() != '1') {
+    while ((choice = getchar() != '1')) {
         fast_intro(profile->interface);
         printf("\n");
         printf(KMAG4 "Enter text, new string equal space, so use space!\n");
@@ -213,16 +210,17 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
     }
 
     system("clear");
-    fast_intro(profile->interface);
     scanf("%*[^\n]");
+    fast_intro(profile->interface);
     write_text(text, text_size);
+    
     char ch;
     int mistake = -1, i = 0;
     long int start_time, end_time;
     char* input = malloc(sizeof(char) * text_size);
-    ch = getchar();
 
     start_time = time(NULL);
+    ch = getchar();
 
     while ((text[i] != '\0') && (ch != 27)) {
         ch = getchar();
@@ -238,10 +236,11 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
              
             if (mistake == max_mistake) {
                 
-                while (ch = getchar() != '1') {
+                while ((ch = getchar() != '1')) {
                     fast_intro(profile->interface);
                     printf(KMAG4 "\nYou made more mistake then was decide\nPut \'1\' for continue\n\n");  
                 }
+                
                 fast_intro(profile->interface);
                 write_text(text, text_size);
                 print_mistake_text(text, input, i); 
@@ -258,7 +257,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
 
     if ((end_time - start_time) >= max_time) {
        
-        while (ch = getchar() != '1') {
+        while ((ch = getchar() != '1')) {
             fast_intro(profile->interface);
             printf(KMAG4 "\nYou did go beyond the time frame\nPut \'1\' for continue\n");
         }
@@ -285,7 +284,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
             return;
         }
 
-        if (level_number <= 9 && (profile->levels_passed != 8 && level_number != 9)) {
+        if (profile->levels_passed != 8 && level_number != 9) {
             fast_intro(profile->interface);
             ch = '0';
             ch = getchar();
@@ -313,7 +312,7 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
         }
     } else {
 
-        while (ch = getchar() != '1') {
+        while ((ch = getchar() != '1')) {
             fast_intro(profile->interface);
             printf(KMAG4 "\nYou made more mistake then was decide, \nput \'1\' for continue\n\n\n"); 
         }
@@ -325,10 +324,8 @@ void play_level(Profile* profile, char* text, uint8_t max_mistake, long int max_
 
 void cannot(char* current, Profile* profile, uint8_t complexity) 
 {   
-    char choice;
-
     if (strcmp(current, "complexity") == 0) {
-        while (choice = getchar()) {
+        while ((choice = getchar())) {
             fast_intro(profile->interface);
             printf(KMAG1);
             menu_equalization(1, "You cannot choice that level");
@@ -346,6 +343,7 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
             
             if (choice == '3') {
                 exit(0);
+                free(profile);
             } else {
                 cannot("complexity", profile, 0);
             }
@@ -355,7 +353,7 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
     }
 
     if (strcmp(current, "level") == 0) {
-        while (choice = getchar()) {
+        while ((choice = getchar())) {
             fast_intro(profile->interface);
             printf(KMAG1);
             menu_equalization(1, "You cannot choice that level");
@@ -383,6 +381,7 @@ void cannot(char* current, Profile* profile, uint8_t complexity)
             
             if (choice == '3') {
                 exit(0);
+                free(profile);
             } else {
                 cannot("level", profile, complexity);
             }

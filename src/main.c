@@ -9,18 +9,17 @@ int main()
 {
     system("clear");
     Profile* profile = add_profile();
-    int intro_variant = 1;
 
     Profile* profile1 = malloc(sizeof(*profile1));
     profile1->name = "jija_loh";
-    profile1->levels_passed = 8;
+    profile1->levels_passed = 7;
     profile1->place_in_rating = 102;
     profile1->point = 322;
-    profile1->interface = 1;
+    profile1->interface = 2;
 
-    int choice;
-    intro(intro_variant);
-    menu(profile1, intro_variant);
+    intro(profile1->interface);
+    menu(profile1, profile1->interface);
 
+    free(profile);
     return 0;
 }
