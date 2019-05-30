@@ -15,7 +15,7 @@ double wtime()
     return (double)t.tv_sec + (double)t.tv_usec * 1E-6;
 }
 
-int comp_mode()
+int comp_mode(Profile* profile)
 {
     srand(time(NULL));
 
@@ -77,7 +77,7 @@ int comp_mode()
 
     printf("Your result:\n\nTime = %.2f sec\n\nNumber of errors = %d\n\nSpeed = %.0f characters per minute\n\n", t3, error, speed);
 
-    add(t3, speed);
+    add(profile, t3, speed);
 
     choice();
 

@@ -1,17 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "include/rating.h"
+#include "include/profile.h"
 
-void add(double time, double speed)
+void add(Profile* profile, double time, double speed)
 {
-    char name[10];
-
     FILE *f = fopen("data/RATING.txt", "a+");
 
-    printf("To save to the rating, enter Your name: ");
-    scanf("%s", name);
-
-    fprintf(f, "%s %.2f %.0f\r\n", name, time, speed);
+    fprintf(f, "%s %.2f %.0f\r\n", profile->name, time, speed);
 
     fclose(f);
 }

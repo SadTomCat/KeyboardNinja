@@ -128,7 +128,7 @@ int menu(Profile* profile, int intro_variant) //После выбора дейс
     if (choice == 3) //For competitive
     {
         system("clear");
-        comp_mode();
+        comp_mode(profile);
     }
     if (choice == 4) //For rating
     {
