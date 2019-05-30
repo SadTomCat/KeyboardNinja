@@ -75,9 +75,11 @@ int comp_mode(Profile* profile)
 
     speed = length / t3 * 60;
 
-    printf("Your result:\n\nTime = %.2f sec\n\nNumber of errors = %d\n\nSpeed = %.0f characters per minute\n\n", t3, error, speed);
+    int points = point(t3, speed);
 
-    add(profile, t3, speed);
+    printf("Your result:\n\nTime = %.2f sec\n\nNumber of errors = %d\n\nSpeed = %.0f characters per minute\n\n%d points\n\n", t3, error, speed, points);
+
+    add(profile, t3, speed, points);
 
     choice();
 
