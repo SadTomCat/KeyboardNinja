@@ -156,7 +156,7 @@ int train(Profile *profile, int intro_variant)
         }
         if ((errors - 1 < 4) && (time3 < secs))
         {
-            printf("Congratilations! You have a good result!");
+            printf("\nCongratilations! You have a good result!");
         }
 
         printf("\n");
