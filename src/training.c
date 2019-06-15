@@ -1,6 +1,6 @@
 #include "include/training.h"
 
-int start()
+void start()
 {
     system("clear");
     printf("\n3\n");
@@ -9,8 +9,6 @@ int start()
     usleep(900000);
     printf("\n1\n");
     usleep(900000);
-
-    return 0;
 }
 
 int action()
@@ -44,7 +42,7 @@ int action_secs()
     return secs;
 }
 
-int train(Profile *profile, int intro_variant)
+void train(Profile *profile, int intro_variant)
 {
     printf("\n             Make your choice\n1.Sentences  2.Words  3.Letters  4.Back");
     int choice = action();
@@ -162,6 +160,4 @@ int train(Profile *profile, int intro_variant)
         printf("\n");
         usleep(10000000);
     }
-
-    return 0;
 }

@@ -11,9 +11,9 @@
 
 double wtime();
 
-int start();
+void start();
 int action();
-int train(Profile *profile, int intro_variant);
+void train(Profile *profile, int intro_variant);
 int action_secs();
 
 int data;
