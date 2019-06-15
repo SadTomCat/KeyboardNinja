@@ -25,32 +25,35 @@ int comp_mode()
 
     FILE *t;
 
-    for (i = 3; i > 0; i--) {
-	printf("%d\n\n", i);
-	usleep(1000000);
+    for (i = 3; i > 0; i--)
+    {
+        printf("%d\n\n", i);
+        usleep(1000000);
     }
     system("clear");
 
-    switch(number) {
-	case 1:
-	   t = fopen("data/comp_1.txt", "r");
-	    break;
-	case 2:
-	    t = fopen("data/comp_2.txt", "r");
-	    break;
-	case 3:
-	    t = fopen("data/comp_3.txt", "r");
-	    break;
-	case 4:
-	    t = fopen("data/comp_4.txt", "r");
-	    break;
-	case 5:
-	    t = fopen("data/comp_5.txt", "r");
-	    break;
+    switch (number)
+    {
+    case 1:
+        t = fopen("data/comp_1.txt", "r");
+        break;
+    case 2:
+        t = fopen("data/comp_2.txt", "r");
+        break;
+    case 3:
+        t = fopen("data/comp_3.txt", "r");
+        break;
+    case 4:
+        t = fopen("data/comp_4.txt", "r");
+        break;
+    case 5:
+        t = fopen("data/comp_5.txt", "r");
+        break;
     }
 
-    if (fgets(text, 500, t) != NULL) {
-	puts(text);
+    if (fgets(text, 500, t) != NULL)
+    {
+        puts(text);
         fclose(t);
     }
     printf("\n\n");
@@ -59,12 +62,14 @@ int comp_mode()
 
     double t1 = wtime();
 
-    for (i = 0; i < length; i++) {
-	ch = getchar();
-	input[i] = ch;
-	if (input[i] != text[i]) {
-	    error++;
-	}
+    for (i = 0; i < length; i++)
+    {
+        ch = getchar();
+        input[i] = ch;
+        if (input[i] != text[i])
+        {
+            error++;
+        }
     }
     scanf("%*[^\n]");
 

@@ -20,8 +20,8 @@ static char keyboard[16][102] = {
     {"///KKK////KKK/EEEEEEEE//////YYY//////BBBBBBBBB////OOOOOO////AAA////////AAA/RRR/////RRR/DDDDDD////////"},
     {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
     {"/////////////////////////////////////////////////////////////////////////////FROM NINJAS TO NINJAS///"},
-};                                                                                                            
-            
+};
+
 static char keyboard2[16][102] = {
     {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
     {"                                                                                                     "},
@@ -72,11 +72,11 @@ void fast_intro(int intro_variant)
             }
             printf("\n");
         }
-        
-        return;
-    } 
 
-    if (intro_variant == 2) 
+        return;
+    }
+
+    if (intro_variant == 2)
     {
         for (i = 0; i < 16; i++)
         {
@@ -89,8 +89,6 @@ void fast_intro(int intro_variant)
 
         return;
     }
-    
-    
 }
 
 void intro(int intro_variant)
@@ -98,8 +96,9 @@ void intro(int intro_variant)
     system("clear");
     int i, j, t;
     int step;
-    
-    if (intro_variant == 1){  
+
+    if (intro_variant == 1)
+    {
         j = 101;
 
         for (j = 101; j >= 0; j--)
@@ -117,7 +116,9 @@ void intro(int intro_variant)
             }
             usleep(20000);
         }
-    } else if (intro_variant == 2) {
+    }
+    else if (intro_variant == 2)
+    {
         j = 101;
 
         for (j = 101; j >= 0; j--)
@@ -138,7 +139,7 @@ void intro(int intro_variant)
     }
 }
 
-int menu(Profile* profile, int intro_variant) //После выбора действия заново вызывается меню.
+int menu(Profile *profile, int intro_variant) //После выбора действия заново вызывается меню.
 {
     int choice = 0;
 
@@ -197,4 +198,3 @@ int menu(Profile* profile, int intro_variant) //После выбора дейс
 
     return 0;
 }
-

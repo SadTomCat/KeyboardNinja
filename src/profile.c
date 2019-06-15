@@ -1,20 +1,23 @@
 #include "include/profile.h"
 
-char* create_nickname(uint8_t fail_name)
-{   
+char *create_nickname(uint8_t fail_name)
+{
     char choice = '0';
 
-    while (choice < '1' || choice > '3') {
-        if (fail_name == 0) {
-            system("clear");            
-            fast_intro(1); 
+    while (choice < '1' || choice > '3')
+    {
+        if (fail_name == 0)
+        {
+            system("clear");
+            fast_intro(1);
             menu_equalization(1, "Choose one variant");
             menu_equalization(1, "1.continue                    2.back                    3.close");
         }
 
-        if (fail_name == 1) {
+        if (fail_name == 1)
+        {
             system("clear");
-            fast_intro(1); 
+            fast_intro(1);
             printf(KMAG1);
             menu_equalization(1, "You input correct nicknamen");
             printf(KMAG9);
@@ -23,40 +26,45 @@ char* create_nickname(uint8_t fail_name)
         }
 
         scanf("%c", &choice);
-        
-        switch(choice) {
-            case '1':
-                system("clear");
-                fast_intro(1);
-                printf(KMAG4 "\nPut your nickname: ");
-                while (getchar() != '\n');
-                break;
-            case '2':
-                //back
-                exit(1);
-                break; 
-            case '3': 
-                exit(0);
+
+        switch (choice)
+        {
+        case '1':
+            system("clear");
+            fast_intro(1);
+            printf(KMAG4 "\nPut your nickname: ");
+            while (getchar() != '\n')
+                ;
+            break;
+        case '2':
+            //back
+            exit(1);
+            break;
+        case '3':
+            exit(0);
         }
-    }  
-    
+    }
+
     uint8_t i = 0;
     char ch;
-    char* nickname = malloc(sizeof(char) * NAME_SIZE);
-    nickname[0] = '-'; 
+    char *nickname = malloc(sizeof(char) * NAME_SIZE);
+    nickname[0] = '-';
 
-    while ((ch = getchar()) != '\n'){
-        if (((ch > 0 && ch < 65) || (ch > 90 && ch < 97) || ch > 122) && ch != 95) {         
+    while ((ch = getchar()) != '\n')
+    {
+        if (((ch > 0 && ch < 65) || (ch > 90 && ch < 97) || ch > 122) && ch != 95)
+        {
             free(nickname);
-            char* nickname = malloc(sizeof(char));
+            char *nickname = malloc(sizeof(char));
             nickname[0] = '-';
             return nickname;
         }
-        
+
         nickname[i] = ch;
         i++;
 
-        if (i == 15) {
+        if (i == 15)
+        {
             nickname[i] = '\0';
             break;
         }
@@ -65,15 +73,17 @@ char* create_nickname(uint8_t fail_name)
     return nickname;
 }
 
-char* verification_name(char* name)
-{   
+char *verification_name(char *name)
+{
     char choice = '0';
 
-    while (name[0] == '-') {
+    while (name[0] == '-')
+    {
         name = create_nickname(1);
     }
 
-    while (choice != '1') {  
+    while (choice != '1')
+    {
         system("clear");
         fast_intro(1);
         printf(KMAG4 "\nYour nickname %s\n\n", name);
@@ -82,11 +92,13 @@ char* verification_name(char* name)
         menu_equalization(1, "1.For continue       2.Change nickname");
         choice = getchar();
 
-        if (choice == '2') {
+        if (choice == '2')
+        {
             name = create_nickname(0);
         }
 
-        while (name[0] == '-') {
+        while (name[0] == '-')
+        {
             name = create_nickname(1);
         }
     }
@@ -94,8 +106,8 @@ char* verification_name(char* name)
     return name;
 }
 
-Profile* add_profile() 
-{   
+Profile *add_profile()
+{
     Profile *new_profile = malloc(sizeof(*new_profile));
 
     new_profile->name = create_nickname(0);

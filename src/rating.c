@@ -25,9 +25,10 @@ void output()
 
     system("clear");
 
-    while (fscanf(f, "%s %lf %lf", t[i].name, &t[i].time, &t[i].speed) != EOF) {
-	printf("%d) %s %.2fsec %.0f character per minute\n", i + 1, t[i].name, t[i].time, t[i].speed);
-	i++;
+    while (fscanf(f, "%s %lf %lf", t[i].name, &t[i].time, &t[i].speed) != EOF)
+    {
+        printf("%d) %s %.2fsec %.0f character per minute\n", i + 1, t[i].name, t[i].time, t[i].speed);
+        i++;
     }
     fclose(f);
 }

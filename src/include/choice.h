@@ -1,6 +1,6 @@
 #ifndef CHOICE_H
 #define CHOICE_H
 
-    void choice_comp();
+void choice_comp();
 
 #endif
