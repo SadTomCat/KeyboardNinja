@@ -12,7 +12,7 @@
 
     void add(Profile* profile, double time, double speed, int points);
 
-//    void sort();
+    void sort();
 
     void output();
 

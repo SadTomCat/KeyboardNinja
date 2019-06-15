@@ -21,7 +21,7 @@ int main()
 
     int choice;
     intro(intro_variant);
-    menu(profile1, intro_variant);
+    menu(profile, intro_variant);
 
     return 0;
 }

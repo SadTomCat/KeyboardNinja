@@ -20,8 +20,12 @@ int comp_mode(Profile* profile)
     srand(time(NULL));
 
     int i, length = 0, error = 0, number = rand() % 5 + 1;
-    char ch, text[500], input[500];
+    char ch;
+    char *text = NULL, *input = NULL;
     double speed;
+
+    text = (char*) malloc(sizeof(char) * 500);
+    input = (char*) malloc(sizeof(char) * 500);
 
     FILE *t;
 
@@ -80,6 +84,9 @@ int comp_mode(Profile* profile)
     printf("Your result:\n\nTime = %.2f sec\n\nNumber of errors = %d\n\nSpeed = %.0f characters per minute\n\n%d points\n\n", t3, error, speed, points);
 
     add(profile, t3, speed, points);
+
+    free(text);
+    free(input);
 
     choice();
 
