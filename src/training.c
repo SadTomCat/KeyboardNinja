@@ -1,5 +1,7 @@
 #include "include/training.h"
 
+#define TEST 1
+
 void start()
 {
     system("clear");
@@ -11,9 +13,55 @@ void start()
     usleep(900000);
 }
 
+int errors_calc(int dlina_text, char *arr_proverka, char *arr_text)
+{
+    int i;
+    int errors = 0;
+    #if (TEST == 0)
+    char bykva;
+
+    for (i = -1; i < dlina_text; i++)
+    {
+        bykva = getchar();
+        arr_proverka[i] = bykva;
+        if (arr_proverka[i] != arr_text[i])
+        {
+            errors++;
+        }
+    }
+#endif
+#if (TEST == 1)
+
+    for (i = 0; i < 4; i++)
+    {
+        if (arr_proverka[i] != arr_text[i])
+        {
+            errors++;
+        }
+    }
+#endif
+    return errors - 1;
+}
+
+double timeout(double time1, double time2)
+{
+    double time = time2 - time1;
+    if (time <= 0)
+    {
+        return 0;
+    }
+    return time;
+}
+
 int action()
 {
     int choice = 0;
+
+#if (TEST == 1)
+    choice = 3;
+#endif
+
+#if (TEST == 0)
     printf("\nInput your choise: ");
 
     while (scanf("%d", &choice) != 1)
@@ -23,21 +71,29 @@ int action()
         printf("\n             Make your choice\n1.Sentences  2.Words  3.Letters  4.Back");
         printf("\nInput your choise: ");
     }
-
+#endif
     return choice;
 }
 
 int action_secs()
 {
     int secs = 0;
+
+#if (TEST == 1)
+    secs = 15;
+#endif
+
+#if (TEST == 0)
     printf("\n\nInput time 5-99 (recommended 15-30)");
 
     while (scanf("%d", &secs) != 1)
     {
         scanf("%*[^\n]");
+
         system("clear");
         printf("\n\n\nInput time 5-99 (recommended 15-30)");
     }
+#endif
 
     return secs;
 }
@@ -54,10 +110,9 @@ void train(Profile *profile, int intro_variant)
         choice = action();
     }
 
-    int i, errors = 0, dlina_text = 0;
+    int errors = 0, dlina_text = 0;
     char arr_text[100];
     char arr_proverka[100];
-    char bykva;
     int rezhim = 0;
     double time3 = 0;
 
@@ -129,21 +184,14 @@ void train(Profile *profile, int intro_variant)
 
         dlina_text = strlen(arr_text);
 
-        for (i = -1; i < dlina_text; i++)
-        {
-            bykva = getchar();
-            arr_proverka[i] = bykva;
-            if (arr_proverka[i] != arr_text[i])
-            {
-                errors++;
-            }
-        }
+        errors = errors_calc(dlina_text, arr_proverka, arr_text);
         scanf("%*[^\n]");
+
         double time2 = wtime();
 
-        time3 = time2 - time1;
+        time3 = timeout(time1, time2);
 
-        printf("Your errors = %d  Your time = %.2f", errors - 1, time3);
+        printf("Your errors = %d  Your time = %.2f", errors, time3);
         if (time3 < secs)
         {
             printf("\nTime mission completed");
