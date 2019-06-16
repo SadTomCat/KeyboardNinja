@@ -71,6 +71,7 @@ CTEST(scene_easy, level_pass)
     result = mistake_test(profile, 0, 2, 1, 1);
     exp_level = 0;
     exp_profile = 1;
+    printf("%d %d\n\n", result, profile->levels_passed);
     ASSERT_EQUAL(exp_level, result);
     ASSERT_EQUAL(exp_profile, profile->levels_passed);
 
