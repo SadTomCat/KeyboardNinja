@@ -8,7 +8,8 @@ EXECUTABLE_TEST = ./bin/test
 OBJECTS = ./built/read_and_write.o ./built/profile.o ./built/menu.o ./built/rating.o ./built/scene.o ./built/training.o ./built/main.o ./built/comp_mode.o ./built/choice.o 
 OBJECTS_TEST = ./built/read_and_write.o ./built/profile.o ./built/menu.o ./built/rating.o ./built/scene.o ./built/training.o ./built/test/main.o ./built/comp_mode.o ./built/choice.o ./built/test/tests.o 
 
-all: bin/KeyboardNinja bin/test
+all: support_files bin/KeyboardNinja bin/test
+.PHONY: support_files run run_test clean
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
@@ -49,6 +50,10 @@ $(EXECUTABLE_TEST): $(OBJECTS_TEST)
 ./built/test/tests.o: ./test/tests.c
 	$(CC) $(CFLAGS_TEST) -o $@ -c $^
 
+support_files: 
+	touch ./data/PROFILES.txt
+	touch ./data/RATING.txt
+
 run: 
 	./bin/KeyboardNinja
 
@@ -59,3 +64,5 @@ clean:
 	rm ./built/*.o
 	rm ./built/test/*.o
 	rm ./bin/*
+	rm ./data/RATING.txt 
+	rm ./data/PROFILES.txt
