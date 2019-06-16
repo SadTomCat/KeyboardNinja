@@ -73,6 +73,15 @@ int action_secs()
 
     return secs;
 }
+int check_text(FILE *text)
+{
+    if (text == NULL)
+    {
+        printf("\nSorry, file can not be open");
+        exit(0);
+    }
+    return 0;
+}
 
 void train(Profile *profile, int intro_variant)
 {
@@ -135,6 +144,7 @@ void train(Profile *profile, int intro_variant)
             break;
         }
     }
+    check_text(text);
     if (choice == 4)
     {
     }
@@ -182,6 +192,6 @@ void train(Profile *profile, int intro_variant)
         }
 
         printf("\n");
-        usleep(10000000);
+        usleep(8000000);
     }
 }
