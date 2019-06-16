@@ -27,4 +27,5 @@ void choice_comp(Profile *profile)
 	    printf("Error! Enter 1 or 2\n\n");
 	    choice_comp(profile);
 	}
+    }
 }
