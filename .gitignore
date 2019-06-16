@@ -1,4 +1,6 @@
 bin/
 built/*.o
 built/test/*.o
+data/RATING.txt
+data/PROFILES.txt
 .vscode/
