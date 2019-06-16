@@ -1,4 +1,6 @@
 # KeyboardNinja
+[![Build Status](https://travis-ci.org/SadTomCat/KeyboardNinja.svg?branch=master)](https://travis-ci.org/SadTomCat/KeyboardNinja)
+
 Игра для улучшения навыков печати.
 ## Установка программы и запуск
 Программа разработана для работы в Linux системах.
