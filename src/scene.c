@@ -241,6 +241,9 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
 
         if (ch == '\n')
         {
+            fast_intro(1);
+            printf("Press enter");
+            scanf("%*[^\n]");
             break;
         }
 
