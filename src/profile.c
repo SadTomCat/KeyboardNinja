@@ -119,3 +119,46 @@ Profile *add_profile()
 
     return new_profile;
 }
+
+Profile* find_profile()
+{
+    char find_name[16], profile_name[16];
+    int levels, place, point, interface;
+
+    Profile* find_profile = malloc(sizeof(*find_profile));
+
+    printf("Enter your profile name: ");
+    scanf("%s", find_name);
+
+    FILE *f = fopen("data/PROFILES.txt", "r");
+
+    while (fscanf(f, "%s %d %d %d %d", profile_name, &levels, &place, &point, &interface) != EOF) {
+        if (strcmp(find_name, profile_name) == 0) {
+	    fclose(f);
+
+	    find_profile->name = profile_name;
+	    find_profile->levels_passed = levels;
+	    find_profile->place_in_rating = place;
+	    find_profile->point = point;
+	    find_profile->interface = interface;
+
+	    return find_profile;
+	}
+    }
+    fclose(f);
+
+    printf("Profile not found\n");
+    free(find_profile);
+
+    return NULL;
+}
+
+void write_profile(Profile* profile)
+{
+    FILE *f = fopen("data/PROFILES.txt", "a");
+
+    fprintf(f, "%s %d %d %d %d\r\n", profile->name, profile->levels_passed, profile->place_in_rating, profile->point, profile->interface);
+
+    fclose(f);
+}
+

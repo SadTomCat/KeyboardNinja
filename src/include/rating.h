@@ -1,18 +1,19 @@
 #ifndef RATING_H
 #define RATING_H
 
-struct table
-{
+#include "profile.h"
+
+struct table {
     int number;
-    char name[10];
+    char name[16];
     double time;
     double speed;
+    int points;
 };
 
-void add(double time, double speed);
-
-//    void sort();
-
+void add(Profile* profile, double time, double speed, int points);
+void sort();
 void output();
+int point(double time, double speed);
 
 #endif

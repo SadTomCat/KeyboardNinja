@@ -1,8 +1,9 @@
 #ifndef COMP_MODE_H
 #define COMP_MODE_H
 
-double wtime();
+#include "profile.h"
 
-int comp_mode();
+double wtime();
+int comp_mode(Profile* profile);
 
 #endif
