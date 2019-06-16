@@ -1,6 +1,3 @@
-/*
-    2.поревести окончательные тесты
-*/
 #include "include/scene.h"
 
 char choice;
@@ -222,29 +219,7 @@ void insane(Profile *profile)
 
 void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_time, uint8_t level_number, uint16_t text_size)
 {
-    while ((choice = getchar() != '1'))
-    {
-        fast_intro(profile->interface);
-        printf("\n");
-        printf(KMAG4 "Enter text, new string equal space, so use space!\n");
-
-        if (max_mistake == 2)
-        {
-            printf("You can make 2 mistake\n");
-        }
-
-        if (max_mistake == 1)
-        {
-            printf("You can make 1 mistake\n");
-        }
-
-        if (max_mistake == 0)
-        {
-            printf("You cannot make mistake\n");
-        }
-
-        printf("Enter '1' for continue\n");
-    }
+    level_manual(profile, max_mistake);
 
     system("clear");
     scanf("%*[^\n]");
@@ -311,6 +286,39 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
     }
 
     mistake = mistake + (text_size - i);
+    mistake_test(profile, mistake, max_mistake, level_number, input);
+}
+
+void level_manual(Profile *profile, uint8_t max_mistake) 
+{
+    while ((choice = getchar() != '1'))
+    {
+        fast_intro(profile->interface);
+        printf("\n");
+        printf(KMAG4 "Enter text, new string equal space, so use space!\n");
+
+        if (max_mistake == 2)
+        {
+            printf("You can make 2 mistake\n");
+        }
+
+        if (max_mistake == 1)
+        {
+            printf("You can make 1 mistake\n");
+        }
+
+        if (max_mistake == 0)
+        {
+            printf("You cannot make mistake\n");
+        }
+
+        printf("Enter '1' for continue\n");
+    }
+}
+
+int mistake_test(Profile *profile, uint8_t mistake, uint8_t max_mistake, uint8_t level_number, char *input)
+{
+    char ch;
 
     if (mistake <= max_mistake)
     {
@@ -328,7 +336,7 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
             }
 
             free(input);
-            return;
+            return 0;
         }
 
         if (profile->levels_passed != 8 && level_number != 9)
@@ -345,7 +353,7 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
             }
 
             free(input);
-            return;
+            return 0;
         }
         else if (profile->levels_passed == 8 && level_number == 9)
         {
@@ -360,7 +368,7 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
             }
 
             free(input);
-            return;
+            return 0;
         }
     }
     else
@@ -373,10 +381,13 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
         }
 
         free(input);
-        return;
+        return 1;
     }
+
+    return 1;
 }
 
+////////
 void cannot(char *current, Profile *profile, uint8_t complexity)
 {
     if (strcmp(current, "complexity") == 0)
