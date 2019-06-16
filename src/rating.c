@@ -24,7 +24,7 @@ void output()
 
     sort();
 
-    printf("\tTOP-10 Rating:\n\n\tNumber\tName\t\tTime\t\t\tSpeed\t\tPoints\n\n");
+    printf("\tTOP-10 Rating:\n\n\tNumber\tName\t\t\tTime\t\t\tSpeed\t\tPoints\n\n");
 
     while (fscanf(f, "%s %lf %lf %d", t[i].name, &t[i].time, &t[i].speed, &t[i].points) != EOF) {
 	printf("\t%d)\t%s\t\t%.2f sec\t\t%.0f c/m\t\t%d\n\n", i + 1, t[i].name, t[i].time, t[i].speed, t[i].points);
