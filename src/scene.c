@@ -345,11 +345,11 @@ int mistake_test(Profile *profile, int mistake, uint8_t max_mistake, uint8_t lev
                     ch = getchar();
                 }
             }
-            
+
             return 0;
         }
 
-        if (profile->levels_passed != 8 && level_number != 9)
+        if ((profile->levels_passed != 8 && level_number != 9) || (profile->levels_passed == 9))
         {
             if (test == 0) 
             {
