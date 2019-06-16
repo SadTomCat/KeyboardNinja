@@ -12,4 +12,3 @@ git clone https://github.com/SadTomCat/KeyboardNinja && cd KeyboardNinja && make
 ```
 make run
 ```
-## Игровой процесс
