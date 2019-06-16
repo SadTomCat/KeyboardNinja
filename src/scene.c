@@ -186,7 +186,7 @@ void insane(Profile *profile)
         if (choice == '2' && profile->levels_passed >= 7)
         {
             char *text = read_from_file("./data/LEVEL_8.txt");
-            play_level(profile, text, 0, 253, 8, 283);
+            play_level(profile, text, 0, 700, 8, 283);
             free(text);
             insane(profile);
         }
@@ -224,7 +224,7 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
     system("clear");
     scanf("%*[^\n]");
     fast_intro(profile->interface);
-    write_text(text, text_size);
+    print_text(text, text_size);
 
     char ch;
     int mistake = -1, i = 0;
@@ -234,7 +234,7 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
     start_time = time(NULL);
     ch = getchar();
 
-    while ((text[i] != '\0') && (ch != 27))
+    while (text[i] != '\0')
     {
         ch = getchar();
         input[i] = ch;
@@ -247,10 +247,10 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
         if (text[i] != ch && ch != '\n')
         {
             mistake++;
-            input[i + 1] = '\0';
 
             if (mistake == max_mistake)
-            {
+            {   
+                input[i + 1] = '\0';
 
                 while ((ch = getchar() != '1'))
                 {
@@ -259,7 +259,7 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
                 }
 
                 fast_intro(profile->interface);
-                write_text(text, text_size);
+                print_text(text, text_size);
                 print_mistake_text(text, input, i);
 
                 free(input);
@@ -274,7 +274,6 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
 
     if ((end_time - start_time) >= max_time)
     {
-
         while ((ch = getchar() != '1'))
         {
             fast_intro(profile->interface);
@@ -286,7 +285,15 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
     }
 
     mistake = mistake + (text_size - i);
-    mistake_test(profile, mistake, max_mistake, level_number, input);
+    mistake_test(profile, mistake, max_mistake, level_number, 0);
+    fast_intro(profile->interface);
+    
+    if (mistake > 0) 
+    {
+        print_text(text, text_size);
+        print_mistake_text(text, input, i);
+        free(input);
+    }
 }
 
 void level_manual(Profile *profile, uint8_t max_mistake) 
@@ -316,72 +323,83 @@ void level_manual(Profile *profile, uint8_t max_mistake)
     }
 }
 
-int mistake_test(Profile *profile, uint8_t mistake, uint8_t max_mistake, uint8_t level_number, char *input)
+int mistake_test(Profile *profile, int mistake, uint8_t max_mistake, uint8_t level_number, uint8_t test)
 {
-    char ch;
-
-    if (mistake <= max_mistake)
+    if (test == 0)
     {
-        if (level_number > profile->levels_passed && profile->levels_passed != 8)
-        {
-            profile->levels_passed = profile->levels_passed + 1;
-            ch = '0';
-            ch = getchar();
+        char ch;
 
-            while (ch != '1')
+        if (mistake <= max_mistake)
+        {
+            if (level_number > profile->levels_passed && profile->levels_passed != 8)
             {
-                fast_intro(profile->interface);
-                printf(KMAG5 "\nYou win, you make %d mistake, you open %d level\nPut \'1\' for continue\n", mistake + 1, profile->levels_passed + 1);
-                ch = getchar();
+                profile->levels_passed = profile->levels_passed + 1;
+                if (test == 0) 
+                {
+                    ch = '0';
+                    ch = getchar();
+
+                    while (ch != '1')
+                    {
+                        fast_intro(profile->interface);
+                        printf(KMAG5 "\nYou win, you make %d mistake, you open %d level\nPut \'1\' for continue\n", mistake + 1, profile->levels_passed + 1);
+                        ch = getchar();
+                    }
+                }
+                return 0;
             }
 
-            free(input);
-            return 0;
-        }
-
-        if (profile->levels_passed != 8 && level_number != 9)
-        {
-            fast_intro(profile->interface);
-            ch = '0';
-            ch = getchar();
-
-            while (ch != '1')
+            if (profile->levels_passed != 8 && level_number != 9)
             {
-                fast_intro(profile->interface);
-                printf(KMAG5 "\nYou win, you make %d mistake, you completed level\nPut \'1\' for continue\n", mistake + 1);
-                ch = getchar();
+                if (test == 0) 
+                {
+                    fast_intro(profile->interface);
+                    ch = '0';
+                    ch = getchar();
+
+                    while (ch != '1')
+                    {
+                        fast_intro(profile->interface);
+                        printf(KMAG5 "\nYou win, you make %d mistake, you completed level\nPut \'1\' for continue\n", mistake + 1);
+                        ch = getchar();
+                    }
+                }
+
+                return 0;
+            }
+            else if (profile->levels_passed == 8 && level_number == 9)
+            {          
+                profile->levels_passed = profile->levels_passed + 1;
+                
+                if (test == 0) 
+                {
+                    ch = '0';
+                    ch = getchar();
+
+                    while (ch != '1')
+                    {
+                        fast_intro(2);
+                        printf(KMAG5 "\nСongratulations you passed game!\nYou can use this menu\nPut \'1\' for continue");
+                        ch = getchar();
+                    }
+                }
+
+                return 0;
+            }
+        }
+        else
+        {
+            if (test == 0) 
+            {
+                while ((ch = getchar() != '1'))
+                {
+                    fast_intro(profile->interface);
+                    printf(KMAG4 "\nYou made more mistake then was decide, \nput \'1\' for continue\n\n\n");
+                }
             }
 
-            free(input);
-            return 0;
+            return 1;
         }
-        else if (profile->levels_passed == 8 && level_number == 9)
-        {
-            ch = '0';
-            ch = getchar();
-
-            while (ch != '1')
-            {
-                fast_intro(2);
-                printf(KMAG5 "\nСongratulations you passed game!\nYou can use this menu\nPut \'1\' for continue");
-                ch = getchar();
-            }
-
-            free(input);
-            return 0;
-        }
-    }
-    else
-    {
-
-        while ((ch = getchar() != '1'))
-        {
-            fast_intro(profile->interface);
-            printf(KMAG4 "\nYou made more mistake then was decide, \nput \'1\' for continue\n\n\n");
-        }
-
-        free(input);
-        return 1;
     }
 
     return 1;

@@ -24,25 +24,6 @@ static char keyboard[16][102] = {
     {"/////////////////////////////////////////////////////////////////////////////FROM NINJAS TO NINJAS///"},
 };
 
-static char keyboard2[16][102] = {
-    {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
-    {"                                                                                                     "},
-    {"  NNNN     NNN  IIIIII  NNNN     NNN      JJJJJJ       AAAA                                          "},
-    {"  NNNNN    NNN  IIIIII  NNNNN    NNN      JJJJJJ     AAA  AAA       *                *       |       "},
-    {"  NNN NN   NNN          NNN NN   NNN      JJJJJJ   AAA      AAA      **            **       |||      "},
-    {"  NNN NN   NNN  IIIIII  NNN NN   NNN      JJJJJJ  AAA        AAA      ***        ***    *   |||   *  "},
-    {"  NNN NN   NNN  IIIIII  NNN NN   NNN      JJJJJJ  AAA        AAA       ****    ****    *   |||||   * "},
-    {"  NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAAAAAAAAAAAAA        **********       * ||||| *   "},
-    {"  NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAAAAAAAAAAAAA         **    **        *********   "},
-    {"  NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAA        AAA        **********       **     **   "},
-    {"  NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAA        AAA       ****    ****      *********   "},
-    {"  NNN  NN  NNN  IIIIII  NNN  NN  NNN      JJJJJJ  AAA        AAA      ***        ***     *********   "},
-    {"  NNN   NN NNN  IIIIII  NNN   NN NNN     JJJJJJ   AAA        AAA     **            **    ***   ***   "},
-    {"  NNN    NNNNN  IIIIII  NNN    NNNNN  JJJJJJ      AAA        AAA    *                *   ***   ***   "},
-    {"                                                                                                     "},
-    {"/////////////////////////////////////////////////////////////////////////////FROM NINJAS TO NINJAS///"},
-};
-
 int choosen_action(int intro_variant)
 {
     int choice = 0;
@@ -57,7 +38,7 @@ int choosen_action(int intro_variant)
         scanf("%*[^\n]");
         system("clear");
         fast_intro(intro_variant);
-        printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
+        printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Help    6.Exit");
         printf(KMAG9 "\nInput your choice: ");
     }
 #endif
@@ -70,32 +51,18 @@ void fast_intro(int intro_variant)
     system("clear");
     int i, k;
     if (intro_variant == 1)
+    
+    for (i = 0; i < 16; i++)
     {
-        for (i = 0; i < 16; i++)
+        for (k = 0; k < 102; k++)
         {
-            for (k = 0; k < 102; k++)
-            {
-                printf(KMAG9 "%c", keyboard[i][k]);
-            }
-            printf("\n");
+            printf(KMAG9 "%c", keyboard[i][k]);
         }
-
-        return;
+        printf("\n");
     }
 
-    if (intro_variant == 2)
-    {
-        for (i = 0; i < 16; i++)
-        {
-            for (k = 0; k < 102; k++)
-            {
-                printf(KMAG9 "%c", keyboard2[i][k]);
-            }
-            printf("\n");
-        }
-
-        return;
-    }
+    return;
+    
 }
 
 void intro(int intro_variant)
@@ -104,46 +71,24 @@ void intro(int intro_variant)
     int i, j, t;
     int step;
 
-    if (intro_variant == 1)
-    {
-        j = 101;
+    j = 101;
 
-        for (j = 101; j >= 0; j--)
-        {                    //Шаг равен разнице числа элементов в строке +1 и числа элементов в строке
-            system("clear"); //Шаг - количество выводимых символов строки
-            step = 102 - j;  //В третьем форе печать строки, количество выводимых элементов равно шаг
-                             //Выводится t элементов от k - t до k
-            for (i = 0; i < 16; i++)
-            {
-                for (t = step; t > 0; t--)
-                {
-                    printf(KMAG9 "%c", keyboard[i][102 - t]);
-                }
-                printf("\n");
-            }
-            usleep(20000);
-        }
-    }
-    else if (intro_variant == 2)
-    {
-        j = 101;
-
-        for (j = 101; j >= 0; j--)
+    for (j = 101; j >= 0; j--)
+    {                    //Шаг равен разнице числа элементов в строке +1 и числа элементов в строке
+        system("clear"); //Шаг - количество выводимых символов строки
+        step = 102 - j;  //В третьем форе печать строки, количество выводимых элементов равно шаг
+                            //Выводится t элементов от k - t до k
+        for (i = 0; i < 16; i++)
         {
-            system("clear");
-            step = 102 - j;
-
-            for (i = 0; i < 16; i++)
+            for (t = step; t > 0; t--)
             {
-                for (t = step; t > 0; t--)
-                {
-                    printf(KMAG9 "%c", keyboard2[i][102 - t]);
-                }
-                printf("\n");
+                printf(KMAG9 "%c", keyboard[i][102 - t]);
             }
-            usleep(20000);
+            printf("\n");
         }
+        usleep(20000);
     }
+    
 }
 
 int menu(Profile *profile, int intro_variant) //После выбора действия заново вызывается меню.
@@ -153,13 +98,14 @@ int menu(Profile *profile, int intro_variant) //После выбора дейс
     system("clear");
 
     fast_intro(profile->interface);
-    printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
+    printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating     5.Help    6.Exit");
     choice = choosen_action(intro_variant);
-    while (choice < 0 || choice > 7)
+    
+    while (choice < 0 || choice > 6)
     {
         system("clear");
         fast_intro(profile->interface);
-        printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
+        printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating     5.Help    6.Exit");
         choice = choosen_action(profile->interface);
     }
 
@@ -181,12 +127,8 @@ int menu(Profile *profile, int intro_variant) //После выбора дейс
     {
         output();
     }
-    if (choice == 5) //For statistic
-    {
-        //statistic();
-    }
 
-    if (choice == 6)
+    if (choice == 5)
     {
         system("clear");
         fast_intro(profile->interface);
@@ -196,7 +138,7 @@ int menu(Profile *profile, int intro_variant) //После выбора дейс
         usleep(7000000);
     }
 
-    if (choice == 7)
+    if (choice == 6)
     {
         exit(0);
         free(profile);

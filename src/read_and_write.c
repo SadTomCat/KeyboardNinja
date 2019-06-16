@@ -25,7 +25,7 @@ char *read_from_file(char *file_name)
     return text;
 }
 
-void write_text(char *text, uint16_t text_size)
+void print_text(char *text, uint16_t text_size)
 {
     char *word = malloc(sizeof(char) * 30);
     int i = 0, j = 0, len = 0;
