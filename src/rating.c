@@ -23,12 +23,20 @@ void output()
 
     sort();
 
+    printf("\tTOP-10 Rating:\n\n\tNumber\tName\t\tTime\t\t\tSpeed\t\tPoints\n\n");
+
     while (fscanf(f, "%s %lf %lf %d", t[i].name, &t[i].time, &t[i].speed, &t[i].points) != EOF) {
-	printf("%d) %s %.2fsec %.0f character per minute %d points\n", i + 1, t[i].name, t[i].time, t[i].speed, t[i].points);
+	printf("\t%d)\t%s\t\t%.2f sec\t\t%.0f c/m\t\t%d\n\n", i + 1, t[i].name, t[i].time, t[i].speed, t[i].points);
 	i++;
     }
     fclose(f);
-    usleep(10000000);
+
+    while (i != 1) {
+	printf("Enter 1 to return to the menu: ");
+	scanf("%d", &i);
+	scanf("%*[^\n]");
+    }
+
 }
 
 int point(double time, double speed)

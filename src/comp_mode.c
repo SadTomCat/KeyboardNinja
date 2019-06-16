@@ -17,20 +17,29 @@ double wtime()
 
 int comp_mode(Profile* profile)
 {
+
+    int i = 0;
+
+    while (i != 1) {
+	system("clear");
+	printf("\t\tYou are ready?\n\n\t\t1)Yes\t2)No\n\n\t\t");
+	scanf("%d", &i);
+	scanf("%*[^\n]");
+	if (i == 2) return 0;
+    }
+
+    system("clear");
+
     srand(time(NULL));
 
-    int i, length = 0, error = 0, number = rand() % 5 + 1;
-    char ch;
-    char *text = NULL, *input = NULL;
+    int length = 0, error = -1, number = rand() % 5 + 1;
+    char ch, text[500], input[500];
     double speed;
-
-    text = (char*) malloc(sizeof(char) * 500);
-    input = (char*) malloc(sizeof(char) * 500);
 
     FILE *t;
 
     for (i = 3; i > 0; i--) {
-	printf("%d\n\n", i);
+	printf("\t\t%d\n\n", i);
 	usleep(1000000);
     }
     system("clear");
@@ -63,13 +72,16 @@ int comp_mode(Profile* profile)
 
     double t1 = wtime();
 
-    for (i = 0; i < length; i++) {
+    scanf("%*[^\n]");
+
+    for (i = -1; i < length; i++) {
 	ch = getchar();
 	input[i] = ch;
 	if (input[i] != text[i]) {
 	    error++;
 	}
     }
+
     scanf("%*[^\n]");
 
     printf("\n\n");
@@ -81,12 +93,9 @@ int comp_mode(Profile* profile)
 
     int points = point(t3, speed);
 
-    printf("Your result:\n\nTime = %.2f sec\n\nNumber of errors = %d\n\nSpeed = %.0f characters per minute\n\n%d points\n\n", t3, error, speed, points);
+    printf("Your result:\n\n\tTime = %.2f sec\n\n\tNumber of errors = %d\n\n\tSpeed = %.0f characters per minute\n\n\t%d points\n\n", t3, error, speed, points);
 
     add(profile, t3, speed, points);
-
-    free(text);
-    free(input);
 
     choice();
 
