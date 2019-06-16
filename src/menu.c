@@ -3,8 +3,6 @@
 #include "include/training.h"
 #include "include/rating.h"
 
-#define TEST 0
-
 static char keyboard[16][102] = {
     {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
     {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
@@ -27,10 +25,7 @@ static char keyboard[16][102] = {
 int choosen_action(int intro_variant)
 {
     int choice = 0;
-#if (TEST == 1)
-    choice = 2;
-#endif
-#if (TEST == 0)
+
     printf("\nInput your choice: ");
 
     while (scanf("%d", &choice) != 1)
@@ -41,7 +36,6 @@ int choosen_action(int intro_variant)
         printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Help    6.Exit");
         printf(KMAG9 "\nInput your choice: ");
     }
-#endif
 
     return choice;
 }
@@ -51,18 +45,17 @@ void fast_intro(int intro_variant)
     system("clear");
     int i, k;
     if (intro_variant == 1)
-    
-    for (i = 0; i < 16; i++)
-    {
-        for (k = 0; k < 102; k++)
+
+        for (i = 0; i < 16; i++)
         {
-            printf(KMAG9 "%c", keyboard[i][k]);
+            for (k = 0; k < 102; k++)
+            {
+                printf(KMAG9 "%c", keyboard[i][k]);
+            }
+            printf("\n");
         }
-        printf("\n");
-    }
 
     return;
-    
 }
 
 void intro(int intro_variant)
@@ -77,7 +70,7 @@ void intro(int intro_variant)
     {                    //Шаг равен разнице числа элементов в строке +1 и числа элементов в строке
         system("clear"); //Шаг - количество выводимых символов строки
         step = 102 - j;  //В третьем форе печать строки, количество выводимых элементов равно шаг
-                            //Выводится t элементов от k - t до k
+                         //Выводится t элементов от k - t до k
         for (i = 0; i < 16; i++)
         {
             for (t = step; t > 0; t--)
@@ -88,7 +81,6 @@ void intro(int intro_variant)
         }
         usleep(20000);
     }
-    
 }
 
 int menu(Profile *profile, int intro_variant) //После выбора действия заново вызывается меню.
@@ -100,7 +92,7 @@ int menu(Profile *profile, int intro_variant) //После выбора дейс
     fast_intro(profile->interface);
     printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating     5.Help    6.Exit");
     choice = choosen_action(intro_variant);
-    
+
     while (choice < 0 || choice > 6)
     {
         system("clear");
