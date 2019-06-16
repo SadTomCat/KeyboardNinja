@@ -162,8 +162,7 @@ void write_profile(Profile* profile)
 
 Profile* sing_in() 
 {
-    fast_intro(1);
-    Profile *profile = find_profile();
+    Profile *profile = NULL;
     char choice;
 
     while (profile == NULL) 
