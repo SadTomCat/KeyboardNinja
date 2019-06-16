@@ -1,6 +1,6 @@
 #include "include/training.h"
 
-#define TEST 1
+#define TEST 0
 
 void start()
 {
