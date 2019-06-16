@@ -34,8 +34,8 @@ void output()
 
     fclose(f);
 
-    while (i != 1) {
-	printf("Enter 1 to return to the menu: ");
+    while (i != 0) {
+	printf("Enter 0 to return to the menu: ");
 	scanf("%d", &i);
 	scanf("%*[^\n]");
     }
