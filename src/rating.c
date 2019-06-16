@@ -73,7 +73,9 @@ void sort()
 
     FILE *n = fopen("data/RATING.txt", "w");
 
-    for (k = 0; k < 10; k++) {
+    if (i >= 10) i = 10;
+
+    for (k = 0; k < i; k++) {
 	fprintf(n, "%s %f %f %d\r\n", t[k].name, t[k].time, t[k].speed, t[k].points);
     }
     fclose(n);
