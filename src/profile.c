@@ -4,14 +4,14 @@ char *create_nickname(uint8_t fail_name)
 {
     char choice = '0';
 
-    while (choice < '1' || choice > '3')
+    while (choice < '1' || choice > '2')
     {
         if (fail_name == 0)
         {
             system("clear");
             fast_intro(1);
             menu_equalization(1, "Choose one variant");
-            menu_equalization(1, "1.continue                    2.back                    3.close");
+            menu_equalization(1, "                            1.continue              2.exit");
         }
 
         if (fail_name == 1)
@@ -22,7 +22,7 @@ char *create_nickname(uint8_t fail_name)
             menu_equalization(1, "You input correct nicknamen");
             printf(KMAG9);
             menu_equalization(1, "Choose one variant");
-            menu_equalization(1, "1.continue                    2.back                    3.exit");
+            menu_equalization(1, "                            1.continue              2.exit");
         }
 
         scanf("%c", &choice);
@@ -37,10 +37,6 @@ char *create_nickname(uint8_t fail_name)
                 ;
             break;
         case '2':
-            //back
-            exit(1);
-            break;
-        case '3':
             exit(0);
         }
     }
@@ -116,12 +112,14 @@ Profile *add_profile()
     new_profile->place_in_rating = 0;
     new_profile->point = 0;
     new_profile->interface = 1;
+    write_profile(new_profile);
 
     return new_profile;
 }
 
 Profile* find_profile()
 {
+    fast_intro(1);
     char find_name[16], profile_name[16];
     int levels, place, point, interface;
 
@@ -160,5 +158,43 @@ void write_profile(Profile* profile)
     fprintf(f, "%s %d %d %d %d\r\n", profile->name, profile->levels_passed, profile->place_in_rating, profile->point, profile->interface);
 
     fclose(f);
+}
+
+Profile* sing_in() 
+{
+    fast_intro(1);
+    Profile *profile = find_profile();
+    char choice;
+
+    while (profile == NULL) 
+    {   
+        fast_intro(1);
+        printf("                                     1.sing in     2.sing up     3.exit\n");
+        choice = getchar();
+       
+        while ((choice != '1') && (choice != '2') && (choice != '3'))
+        {
+            fast_intro(1);
+            printf("                                     1.sing in     2.sing up     3.exit\n");
+            choice = getchar();
+        }
+
+        switch (choice)
+        {
+        case '1':
+            profile = find_profile();
+            break;
+
+        case '2':
+            profile = add_profile();
+            break;
+
+        case '3':
+            exit(0);
+        }
+        
+    } 
+
+    return profile;
 }
 

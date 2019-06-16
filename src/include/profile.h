@@ -21,5 +21,6 @@ char* verification_name(char* name);
 Profile* add_profile();
 Profile* find_profile();
 void write_profile(Profile* profile);
+Profile* sing_in();
 
 #endif //PROFILE_H_
