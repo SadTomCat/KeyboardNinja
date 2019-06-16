@@ -1,7 +1,5 @@
 #include "include/training.h"
 
-#define TEST 0
-
 void start()
 {
     system("clear");
@@ -17,7 +15,7 @@ int errors_calc(int dlina_text, char *arr_proverka, char *arr_text)
 {
     int i;
     int errors = 0;
-    #if (TEST == 0)
+
     char bykva;
 
     for (i = -1; i < dlina_text; i++)
@@ -29,17 +27,6 @@ int errors_calc(int dlina_text, char *arr_proverka, char *arr_text)
             errors++;
         }
     }
-#endif
-#if (TEST == 1)
-
-    for (i = 0; i < 4; i++)
-    {
-        if (arr_proverka[i] != arr_text[i])
-        {
-            errors++;
-        }
-    }
-#endif
     return errors - 1;
 }
 
@@ -57,11 +44,6 @@ int action()
 {
     int choice = 0;
 
-#if (TEST == 1)
-    choice = 3;
-#endif
-
-#if (TEST == 0)
     printf("\nInput your choise: ");
 
     while (scanf("%d", &choice) != 1)
@@ -71,7 +53,7 @@ int action()
         printf("\n             Make your choice\n1.Sentences  2.Words  3.Letters  4.Back");
         printf("\nInput your choise: ");
     }
-#endif
+
     return choice;
 }
 
@@ -79,11 +61,6 @@ int action_secs()
 {
     int secs = 0;
 
-#if (TEST == 1)
-    secs = 15;
-#endif
-
-#if (TEST == 0)
     printf("\n\nInput time 5-99 (recommended 15-30)");
 
     while (scanf("%d", &secs) != 1)
@@ -93,9 +70,17 @@ int action_secs()
         system("clear");
         printf("\n\n\nInput time 5-99 (recommended 15-30)");
     }
-#endif
 
     return secs;
+}
+int check_text(FILE *text)
+{
+    if (text == NULL)
+    {
+        printf("\nSorry, file can not be open");
+        exit(0);
+    }
+    return 0;
 }
 
 void train(Profile *profile, int intro_variant)
@@ -159,6 +144,7 @@ void train(Profile *profile, int intro_variant)
             break;
         }
     }
+    check_text(text);
     if (choice == 4)
     {
     }
@@ -206,6 +192,6 @@ void train(Profile *profile, int intro_variant)
         }
 
         printf("\n");
-        usleep(10000000);
+        usleep(8000000);
     }
 }
