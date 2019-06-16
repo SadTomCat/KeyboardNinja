@@ -93,7 +93,7 @@ int comp_mode(Profile* profile)
     free(text);
     free(input);
 
-    choice_comp();
+    choice_comp(profile);
 
     return 0;
 }

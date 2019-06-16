@@ -1,6 +1,8 @@
 #ifndef CHOICE_H
 #define CHOICE_H
 
-void choice_comp();
+#include "struct_profile.h"
+
+void choice_comp(Profile *profile);
 
 #endif

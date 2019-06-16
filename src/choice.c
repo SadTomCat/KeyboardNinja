@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "include/menu.h"
 
-void choice_comp()
+void choice_comp(Profile *profile)
 {
 	int number;
 
@@ -14,7 +14,7 @@ void choice_comp()
 
 	if (number == 1)
 	{
-		comp_mode();
+		comp_mode(profile);
 	}
 	else
 	{
@@ -28,7 +28,7 @@ void choice_comp()
 		{
 			system("clear");
 			printf("Error! Enter 1 or 2\n\n");
-			choice_comp();
+			choice_comp(profile);
 		}
 	}
 }
