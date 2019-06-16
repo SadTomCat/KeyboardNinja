@@ -3,7 +3,7 @@
 #include "include/training.h"
 #include "include/rating.h"
 
-#define TEST 1
+#define TEST 0
 
 static char keyboard[16][102] = {
     {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
