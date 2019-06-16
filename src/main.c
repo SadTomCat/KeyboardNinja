@@ -9,7 +9,9 @@ int main()
 {
     system("clear");
     //Profile *profile = add_profile();
-
+    Profile *profile = sing_in();
+    printf("%s", profile->name);
+     
     Profile *profile1 = malloc(sizeof(*profile1));
     profile1->name = "jija_loh";
     profile1->levels_passed = 9;
@@ -20,7 +22,5 @@ int main()
     //intro(profile1->interface);
     menu(profile1, profile1->interface);
 
-
-    //free(profile);
     return 0;
 }
