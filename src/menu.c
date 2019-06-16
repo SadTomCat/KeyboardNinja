@@ -3,6 +3,8 @@
 #include "include/training.h"
 #include "include/rating.h"
 
+#define TEST 1
+
 static char keyboard[16][102] = {
     {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
     {"/////////////////////////////////////////////////////////////////////////////////////////////////////"},
@@ -44,6 +46,10 @@ static char keyboard2[16][102] = {
 int choosen_action(int intro_variant)
 {
     int choice = 0;
+#if (TEST == 1)
+    choice = 2;
+#endif
+#if (TEST == 0)
     printf("\nInput your choice: ");
 
     while (scanf("%d", &choice) != 1)
@@ -54,6 +60,7 @@ int choosen_action(int intro_variant)
         printf(KMAG9 "\n\t1.Training    2.Scene    3.Competitive    4.Rating    5.Statistic    6.Help    7.Exit");
         printf(KMAG9 "\nInput your choice: ");
     }
+#endif
 
     return choice;
 }
@@ -104,12 +111,12 @@ void intro(int intro_variant)
         for (j = 101; j >= 0; j--)
         {                    //Шаг равен разнице числа элементов в строке +1 и числа элементов в строке
             system("clear"); //Шаг - количество выводимых символов строки
-            step = 102 - j;
-
+            step = 102 - j;  //В третьем форе печать строки, количество выводимых элементов равно шаг
+                             //Выводится t элементов от k - t до k
             for (i = 0; i < 16; i++)
-            { //В третьем форе печать строки, количество выводимых элементов равно шаг
+            {
                 for (t = step; t > 0; t--)
-                { //Выводится t элементов от k - t до k
+                {
                     printf(KMAG9 "%c", keyboard[i][102 - t]);
                 }
                 printf("\n");
@@ -122,14 +129,14 @@ void intro(int intro_variant)
         j = 101;
 
         for (j = 101; j >= 0; j--)
-        {                    //Шаг равен разнице числа элементов в строке +1 и числа элементов в строке
-            system("clear"); //Шаг - количество выводимых символов строки
+        {
+            system("clear");
             step = 102 - j;
 
             for (i = 0; i < 16; i++)
-            { //В третьем форе печать строки, количество выводимых элементов равно шаг
+            {
                 for (t = step; t > 0; t--)
-                { //Выводится t элементов от k - t до k
+                {
                     printf(KMAG9 "%c", keyboard2[i][102 - t]);
                 }
                 printf("\n");

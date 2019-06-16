@@ -4,7 +4,11 @@ CC = gcc
 CFLAGS = -Wall -Werror
 CFLAGS_TEST = -I thirdparty -Wall -Werror
 EXECUTABLE = ./bin/KeyboardNinja
+EXECUTABLE_TEST = ./bin/KeyboardNinja_test
 OBJECTS = ./built/read_and_write.o ./built/profile.o ./built/menu.o ./built/rating.o ./built/scene.o ./built/training.o ./built/main.o ./built/comp_mode.o ./built/choice.o 
+OBJECTS_TEST = ./built/read_and_write.o ./built/profile.o ./built/menu.o ./built/rating.o ./built/scene.o ./built/training.o ./built/test/main.o ./built/comp_mode.o ./built/choice.o ./built/test/tests.o 
+
+all: bin/KeyboardNinja bin/KeyboardNinja_test
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
@@ -36,8 +40,20 @@ $(EXECUTABLE): $(OBJECTS)
 ./built/choice.o: ./src/choice.c
 	$(CC) $(CFLAGS)  -o $@ -c $^
 
+$(EXECUTABLE_TEST): $(OBJECTS_TEST)
+	$(CC) $(CFLAGS_TEST) -o $@ $^
+
+./built/test/main.o: ./test/main.c
+	$(CC) $(CFLAGS_TEST) -o $@ -c $^
+
+./built/test/tests.o: ./test/tests.c
+	$(CC) $(CFLAGS_TEST) -o $@ -c $^
+
 run: 
 	./bin/KeyboardNinja
+
+run_test: 
+	./bin/KeyboardNinja_test
 
 clean: 
 	rm ./built/*.o
