@@ -189,6 +189,7 @@ Profile* sing_in()
             break;
 
         case '3':
+            free(profile);
             exit(0);
         }
         

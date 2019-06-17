@@ -42,8 +42,8 @@ void scene(Profile *profile)
 
     if (choice == 5)
     {
-        exit(0);
         free(profile);
+        exit(0);
     }
     else
     {
@@ -101,8 +101,8 @@ void easy(Profile *profile)
 
         if (choice == '5')
         {
-            exit(0);
             free(profile);
+            exit(0);
         }
     }
 }
@@ -156,8 +156,8 @@ void medium(Profile *profile)
 
         if (choice == '5')
         {
-            exit(0);
             free(profile);
+            exit(0);
         }
     }
 }
@@ -211,8 +211,8 @@ void insane(Profile *profile)
 
         if (choice == '5')
         {
-            exit(0);
             free(profile);
+            exit(0);
         }
     }
 }
@@ -381,8 +381,7 @@ int mistake_test(Profile *profile, int mistake, uint8_t max_mistake, uint8_t lev
 
                 while (ch != '1')
                 {
-                    fast_intro(2);
-                    printf(KMAG5 "\nСongratulations you passed game!\nYou can use this menu\nPut \'1\' for continue");
+                    printf(KMAG5 "\nСongratulations you passed game!\nPut \'1\' for continue");
                     ch = getchar();
                 }
             }

@@ -44,16 +44,15 @@ void fast_intro(int intro_variant)
 {
     system("clear");
     int i, k;
-    if (intro_variant == 1)
 
-        for (i = 0; i < 16; i++)
+    for (i = 0; i < 16; i++)
+    {
+        for (k = 0; k < 102; k++)
         {
-            for (k = 0; k < 102; k++)
-            {
-                printf(KMAG9 "%c", keyboard[i][k]);
-            }
-            printf("\n");
+            printf(KMAG9 "%c", keyboard[i][k]);
         }
+        printf("\n");
+    }
 
     return;
 }
@@ -79,6 +78,7 @@ void intro(int intro_variant)
             }
             printf("\n");
         }
+
         usleep(20000);
     }
 }
@@ -132,8 +132,8 @@ int menu(Profile *profile, int intro_variant) //После выбора дейс
 
     if (choice == 6)
     {
-        exit(0);
         free(profile);
+        exit(0);
     }
 
     menu(profile, profile->interface);
