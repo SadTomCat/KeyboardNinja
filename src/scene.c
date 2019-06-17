@@ -252,7 +252,7 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
             mistake++;
 
             if (mistake == max_mistake)
-            {   
+            {
                 input[i + 1] = '\0';
 
                 while ((ch = getchar() != '1'))
@@ -290,8 +290,8 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
     mistake = mistake + (text_size - i);
     mistake_test(profile, mistake, max_mistake, level_number, 0);
     fast_intro(profile->interface);
-    
-    if (mistake > 0) 
+
+    if (mistake > 0)
     {
         print_text(text, text_size);
         print_mistake_text(text, input, i);
@@ -299,7 +299,7 @@ void play_level(Profile *profile, char *text, uint8_t max_mistake, long int max_
     }
 }
 
-void level_manual(Profile *profile, uint8_t max_mistake) 
+void level_manual(Profile *profile, uint8_t max_mistake)
 {
     while ((choice = getchar() != '1'))
     {
@@ -336,7 +336,7 @@ int mistake_test(Profile *profile, int mistake, uint8_t max_mistake, uint8_t lev
         if (level_number > profile->levels_passed && profile->levels_passed != 8)
         {
             profile->levels_passed = profile->levels_passed + 1;
-            if (test == 0) 
+            if (test == 0)
             {
                 ch = '0';
                 ch = getchar();
@@ -354,7 +354,7 @@ int mistake_test(Profile *profile, int mistake, uint8_t max_mistake, uint8_t lev
 
         if ((profile->levels_passed != 8 && level_number != 9) || (profile->levels_passed == 9))
         {
-            if (test == 0) 
+            if (test == 0)
             {
                 fast_intro(profile->interface);
                 ch = '0';
@@ -371,10 +371,10 @@ int mistake_test(Profile *profile, int mistake, uint8_t max_mistake, uint8_t lev
             return 0;
         }
         else if (profile->levels_passed == 8 && level_number == 9)
-        {          
+        {
             profile->levels_passed = profile->levels_passed + 1;
-            
-            if (test == 0) 
+
+            if (test == 0)
             {
                 ch = '0';
                 ch = getchar();
@@ -391,7 +391,7 @@ int mistake_test(Profile *profile, int mistake, uint8_t max_mistake, uint8_t lev
     }
     else
     {
-        if (test == 0) 
+        if (test == 0)
         {
             while ((ch = getchar() != '1'))
             {

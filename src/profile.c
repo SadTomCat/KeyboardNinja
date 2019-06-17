@@ -117,31 +117,33 @@ Profile *add_profile()
     return new_profile;
 }
 
-Profile* find_profile()
+Profile *find_profile()
 {
     fast_intro(1);
     char find_name[16], profile_name[16];
     int levels, place, point, interface;
 
-    Profile* find_profile = malloc(sizeof(*find_profile));
+    Profile *find_profile = malloc(sizeof(*find_profile));
 
     printf("Enter your profile name: ");
     scanf("%s", find_name);
 
     FILE *f = fopen("data/PROFILES.txt", "r");
 
-    while (fscanf(f, "%s %d %d %d %d", profile_name, &levels, &place, &point, &interface) != EOF) {
-        if (strcmp(find_name, profile_name) == 0) {
-	    fclose(f);
+    while (fscanf(f, "%s %d %d %d %d", profile_name, &levels, &place, &point, &interface) != EOF)
+    {
+        if (strcmp(find_name, profile_name) == 0)
+        {
+            fclose(f);
 
-	    find_profile->name = profile_name;
-	    find_profile->levels_passed = levels;
-	    find_profile->place_in_rating = place;
-	    find_profile->point = point;
-	    find_profile->interface = interface;
+            find_profile->name = profile_name;
+            find_profile->levels_passed = levels;
+            find_profile->place_in_rating = place;
+            find_profile->point = point;
+            find_profile->interface = interface;
 
-	    return find_profile;
-	}
+            return find_profile;
+        }
     }
     fclose(f);
 
@@ -151,7 +153,7 @@ Profile* find_profile()
     return NULL;
 }
 
-void write_profile(Profile* profile)
+void write_profile(Profile *profile)
 {
     FILE *f = fopen("data/PROFILES.txt", "a");
 
@@ -160,17 +162,17 @@ void write_profile(Profile* profile)
     fclose(f);
 }
 
-Profile* sing_in() 
+Profile *sing_in()
 {
     Profile *profile = NULL;
     char choice;
 
-    while (profile == NULL) 
-    {   
+    while (profile == NULL)
+    {
         fast_intro(1);
         printf("                                     1.sing in     2.sing up     3.exit\n");
         choice = getchar();
-       
+
         while ((choice != '1') && (choice != '2') && (choice != '3'))
         {
             fast_intro(1);
@@ -192,9 +194,7 @@ Profile* sing_in()
             free(profile);
             exit(0);
         }
-        
-    } 
+    }
 
     return profile;
 }
-

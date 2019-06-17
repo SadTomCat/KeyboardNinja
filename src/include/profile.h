@@ -16,11 +16,11 @@
 /*15 + 1! + 1 + 1! + 1 + 1! + 4 + 1! + 1(1! == пробел, всего под профиль максимум 26 символов)*/
 //ИМЯ_ПРОЙДЕНО.УРОВНЕЙ_МЕСТО.В.РЕЙТИНГЕ_КОЛ.ОЧКОВ_ИНТЕРФЕЙС (_ == пробел в файле)
 
-char* create_nickname(uint8_t fail_name);
-char* verification_name(char* name);
-Profile* add_profile();
-Profile* find_profile();
-void write_profile(Profile* profile);
-Profile* sing_in();
+char *create_nickname(uint8_t fail_name);
+char *verification_name(char *name);
+Profile *add_profile();
+Profile *find_profile();
+void write_profile(Profile *profile);
+Profile *sing_in();
 
 #endif //PROFILE_H_

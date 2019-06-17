@@ -9,23 +9,29 @@ void choice_comp(Profile *profile)
 {
 	int number;
 
-    printf("                                                              Your next step:\n\n");
-    printf("                                            1) return to the menu           2) see rating\n\n");
-    printf("                                            Your choice: ");
-    scanf("%d", &number);
-    scanf("%*[^\n]");
+	printf("                                                              Your next step:\n\n");
+	printf("                                            1) return to the menu           2) see rating\n\n");
+	printf("                                            Your choice: ");
+	scanf("%d", &number);
+	scanf("%*[^\n]");
 
-    if (number == 1) {
-	system("clear");
-	fast_intro(1);
-	//menu();
-    } else {
-	if (number == 2) {
-	    output();
-	} else {
-	    system("clear");
-	    printf("Error! Enter 1 or 2\n\n");
-	    choice_comp(profile);
+	if (number == 1)
+	{
+		system("clear");
+		fast_intro(1);
+		//menu();
 	}
-    }
+	else
+	{
+		if (number == 2)
+		{
+			output();
+		}
+		else
+		{
+			system("clear");
+			printf("Error! Enter 1 or 2\n\n");
+			choice_comp(profile);
+		}
+	}
 }

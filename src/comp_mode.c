@@ -15,17 +15,19 @@ double wtime()
     return (double)t.tv_sec + (double)t.tv_usec * 1E-6;
 }
 
-int comp_mode(Profile* profile)
+int comp_mode(Profile *profile)
 {
 
     int i = 0;
 
-    while (i != 1) {
-	system("clear");
-	printf("\t\tYou are ready?\n\n\t\t1)Yes\t2)No\n\n\t\t");
-	scanf("%d", &i);
-	scanf("%*[^\n]");
-	if (i == 2) return 0;
+    while (i != 1)
+    {
+        system("clear");
+        printf("\t\tYou are ready?\n\n\t\t1)Yes\t2)No\n\n\t\t");
+        scanf("%d", &i);
+        scanf("%*[^\n]");
+        if (i == 2)
+            return 0;
     }
 
     system("clear");
@@ -38,10 +40,10 @@ int comp_mode(Profile* profile)
 
     FILE *t;
 
-    for (i = 3; i > 0; i--) {
-	printf("\t\t%d\n\n", i);
-	usleep(1000000);
-
+    for (i = 3; i > 0; i--)
+    {
+        printf("\t\t%d\n\n", i);
+        usleep(1000000);
     }
     system("clear");
 
@@ -77,12 +79,14 @@ int comp_mode(Profile* profile)
 
     scanf("%*[^\n]");
 
-    for (i = -1; i < length; i++) {
-	ch = getchar();
-	input[i] = ch;
-	if (input[i] != text[i]) {
-	    error++;
-	}
+    for (i = -1; i < length; i++)
+    {
+        ch = getchar();
+        input[i] = ch;
+        if (input[i] != text[i])
+        {
+            error++;
+        }
     }
 
     scanf("%*[^\n]");

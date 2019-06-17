@@ -4,6 +4,6 @@
 #include "profile.h"
 
 double wtime();
-int comp_mode(Profile* profile);
+int comp_mode(Profile *profile);
 
 #endif
